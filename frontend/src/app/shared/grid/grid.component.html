@@ -1,0 +1,18 @@
+<div fxLayout='row wrap' class="col-gap" *ngIf="blogList && blogList.length>0">
+  <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" *ngFor="let blog of blogList">
+    <mat-card>
+      <mat-card-content class="relative">
+        <h4 class="font-bold title-link simple-btn" style="margin-bottom: 0;">{{blog?.name}}</h4>
+        <p class="simple-btn font-italic">{{blog?.city}}</p>
+        <p [innerHTML]="blog?.short_content"></p>
+        <div class="meta-tag">
+          <p class="simple-btn text-muted">
+            <i class="material-icons">
+              calendar_today
+            </i> {{blog?.post_date}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

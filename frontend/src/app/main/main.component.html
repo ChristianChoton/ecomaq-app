@@ -1,0 +1,25 @@
+<div (scroll)="onScrollEvent($event)">
+   <mat-sidenav-container>
+      <mat-sidenav #sidenav [(opened)]="helper.sidenavOpen" class="sidebar-area" mode="over">
+         <mat-nav-list>
+           <div class="close-btn-sidebar">
+             <a href="javascript:void(0)" (click)="helper.sidenavOpen = false">
+               <i class="material-icons">close</i>
+             </a>
+           </div>
+           <sidebar-menu *ngFor="let item of menuItems.getMainMenu()" [item]="item"></sidebar-menu>
+         </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav class="em-sidebar" #paymentSidenav [(opened)]="helper.paymentSidenavOpen" position="end" mode="over" >
+         <sidebar-payment-detail></sidebar-payment-detail>
+      </mat-sidenav>
+  
+      <ngx-toasta></ngx-toasta>
+      <lheader></lheader>      
+      <div class="main">
+         <router-outlet (activate)="onActivate($event)"></router-outlet>
+      </div>
+      <lfooter></lfooter>
+   </mat-sidenav-container>
+</div>
+

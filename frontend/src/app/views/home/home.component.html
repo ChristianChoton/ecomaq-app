@@ -1,0 +1,83 @@
+<div class="home-main-banner mb-5">
+  <div class="container">
+    <div fxLayout='row wrap' fxLayoutGap="0px">
+      <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="63" fxFlex.xl="63">
+        <div class="home-slider">
+          <page-slider [isRTL]="false"></page-slider>
+        </div>
+      </div>
+      <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="37" fxFlex.xl="37">
+        <div class="aside-banner">
+          <a [routerLink]="['/products/accessories']" class="card-shadow"> <img src="assets/images/aside-1.jpg" alt="side" width="547" height="315"></a>
+        </div>
+
+        <div class="aside-banner">
+          <a [routerLink]="['/products/accessories']" class="card-shadow"><img src="assets/images/aside-2.jpg" alt="side" width="547" height="315"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="feature-section">
+  <div class="container">
+    <features></features>
+  </div>
+</div>
+<div class="shop-card-wrapper section-gap" *ngIf="productsArray" style="padding-bottom: 0;">
+  <div class="block-title text-center">
+    <h2>Productos</h2>
+  </div>
+  <div class="container">
+   <mat-tab-group [(selectedIndex)]="featuredProductsSelectedTab" mat-stretch-tabs="false" mat-align-tabs="center" class="mb-1">
+      <mat-tab label="Madera"></mat-tab>
+      <mat-tab label="Metálicos"></mat-tab>
+      <mat-tab label="Vidrios"></mat-tab>
+      <mat-tab label="Cerámicos"></mat-tab>
+      <mat-tab label="Compuestos"></mat-tab>
+   </mat-tab-group>
+   <ng-container *ngIf="onFeaturedSelectedTab(featuredProductsSelectedTab)">
+      <ngx-slick-carousel class="carousel" [config]="helper.slideConfig">
+        <div ngxSlickItem *ngFor="let product of productsSliderData; let i=index">
+          <product-card [module]="'products'" [product]="product" (addToCart)="addToCart($event)" (addToWishlist)="addToWishlist($event)" [index]="i" type="featured"></product-card>
+        </div>
+      </ngx-slick-carousel>
+   </ng-container>
+  </div>
+</div>
+<div class="detail-offer section-gap bg-white" style="padding-top: 2rem; padding-bottom: 0;">
+  <div class="container" *ngIf="productsArray">
+    <deal-of-day [singleProduct]="singleProduct"></deal-of-day>
+  </div>
+</div>
+
+<div class="shop-card-wrapper section-gap" style="padding-top: 2rem;" *ngIf="productsArray">
+  <div class="block-title text-center">
+    <h2>Maquinaria</h2>
+  </div>
+  <div class="container">
+    <mat-tab-group [(selectedIndex)]="newArrivalSelectedTab" mat-stretch-tabs="false" mat-align-tabs="center" class="mb-1">
+      <mat-tab label="M. Pesada"></mat-tab>
+      <mat-tab label="M. Liviana"></mat-tab>
+      <mat-tab label="Equip. Menores"></mat-tab>
+      <mat-tab label="Equip. Electrónicos"></mat-tab>
+    </mat-tab-group>
+
+    <ng-container *ngIf="onNewArrivalsSelectedTab(newArrivalSelectedTab)">
+      <ngx-slick-carousel class="carousel" [config]="helper.slideConfig">
+        <div ngxSlickItem *ngFor="let product of newProductsSliderData; let i=index">
+          <product-card [module]="'machinery'" [product]="product" (addToCart)="addToCart($event)" (addToWishlist)="addToWishlist($event)" [index]="i" type="new"></product-card>
+        </div>
+      </ngx-slick-carousel>
+   </ng-container>
+  </div>
+</div>
+
+<div class="post-wrapper review-gap mb-5">
+  <div class="block-title text-center">
+    <h2>Opiniones</h2>
+  </div>
+  <div class="container" *ngIf="blogList" style="padding-left: 2rem;padding-right: 2rem;">
+    <grid [blogList]="blogList"></grid>
+  </div>
+</div>

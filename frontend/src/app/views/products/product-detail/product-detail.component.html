@@ -1,0 +1,16 @@
+<ng-container *ngIf="product">
+  <title-page heading="{{product.name}}"></title-page>
+  <div class="inner-container">
+    <div class="product-detail-page">
+      <shop-details [detailData]="product"></shop-details>
+      <div class="bg-grey section-gap" *ngIf="productsList && productsList.length>0">
+        <div class="container">
+          <div class="block-title text-center gap">
+            <h1 style="font-size: 40px;">Te recomendamos</h1>
+          </div>
+          <product-grid [products]="productsList" gridLength="4" (addToCart)="addToCart($event)" (addToWishList)="addToWishList($event)"></product-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,25 @@
+<ngx-slick-carousel class="carousel" [config]="slideConfig">
+   <div ngxSlickItem>
+      <div class="bannerStyle slider-img-2">
+         <div class="ngx-slider-content">
+            <div class="ngx-slider-inner">
+               <h2 style="margin-bottom: 3px;">50% de descuento</h2>
+               <h1>Madera - Vidrio</h1>
+               <button color="accent" mat-raised-button [routerLink]="['/products/wood']" [queryParams]="{category: '688cec094054641b0cc3e093'}">Compra Ahora</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div ngxSlickItem>
+      <div class="bannerStyle slider-img-3">
+         <div class="ngx-slider-content">
+            <div class="ngx-slider-inner">
+               <h2 style="margin-bottom: 3px;">Venta especial hoy</h2>
+               <h1>Maquinaria pesada</h1>
+               <button color="accent" mat-raised-button [routerLink]="['/machinery/heavy']" [queryParams]="{category: '688e4b92ae6c2d1a6cbff2ef'}">Compra Ahora</button>
+            </div>
+         </div>
+     </div>
+   </div>
+</ngx-slick-carousel>
+
