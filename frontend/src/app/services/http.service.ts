@@ -5,18 +5,18 @@ import { Product } from "../core/models/product.model";
 import { ProductResponse } from "../core/reponse-models/product-response.model";
 import { productToModel } from "../core/mappers/product.mapper";
 import { userToModel } from "../core/mappers/user.mapper";
-import { environment } from "../../environments/environment";
 import { Token } from "../core/models/token.model";
 import { UserResponse } from "../core/reponse-models/user-response.model";
 import { User } from "../core/models/user.model";
 import { Auth } from "../core/models/auth.model";
 import { UserCreate } from "../core/models/user-create.model";
 
+
 @Injectable()
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  baseRute = environment.apiUrl;
+  baseRute = 'https://ecomaq-api.onrender.com/api/';
 
   public getProducts(): Observable<Product[]> {
     return this.http
