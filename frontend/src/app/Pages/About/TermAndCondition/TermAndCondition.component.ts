@@ -13,7 +13,7 @@ export class TermAndConditionComponent implements OnInit {
    constructor(public embryoService: EmbryoService) { }
 
    ngOnInit() {
-      this.embryoService.getTermCondition().valueChanges().subscribe(res => {this.termContions = res});
+      //this.embryoService.getTermCondition().valueChanges().subscribe(res => {this.termContions = res});
    }
 
 }

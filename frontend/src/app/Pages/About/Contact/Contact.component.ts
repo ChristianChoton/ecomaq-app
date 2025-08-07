@@ -12,7 +12,7 @@ export class ContactComponent implements OnInit {
    emailPattern : any = /\S+@\S+\.\S+/;
 
    constructor(public embryoService : EmbryoService) {
-      this.embryoService.getContactInfo().valueChanges().subscribe(res => {this.contactInfo = res});
+      //this.embryoService.getContactInfo().valueChanges().subscribe(res => {this.contactInfo = res});
    }
 
    ngOnInit() {

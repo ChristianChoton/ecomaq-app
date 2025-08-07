@@ -38,8 +38,8 @@ export class DetailsComponent implements OnInit {
 
    public getBlodDetails() {
       this.blogId = (this.blogId) ? this.blogId : 1;
-      this.embryoService.getBlogList().valueChanges().
-        subscribe(res => {this.getBlogDetailsResponse(res)});
+      // this.embryoService.getBlogList().valueChanges().
+      //   subscribe(res => {this.getBlogDetailsResponse(res)});
    }
 
    public getBlogDetailsResponse(response) {

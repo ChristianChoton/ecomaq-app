@@ -1,35 +1,31 @@
 <mat-card>
-  <h4>Profile Information</h4>
-  <div class="pt-3">
+  <h2 style="padding-top: 1rem;padding-right: 1rem;padding-left: 1rem;">Información de Perfil</h2>
+  <div class="pt-3" style="padding-bottom: 1rem;padding-right: 1rem;padding-left: 1rem;">
     <div class="proflie-field mb-3">
-      <label>First Name:</label>
-      <span>John</span>
+      <label>Nombre:</label>
+      <span>{{user.firstName}}</span>
     </div>
     <div class="proflie-field mb-3">
-      <label>Last Name:</label>
-      <span>Doe</span>
+      <label>Apellido:</label>
+      <span>{{user.lastName}}</span>
     </div>
     <div class="proflie-field mb-3">
-      <label>Gender:</label>
-      <span>Male</span>
+      <label>Género:</label>
+      <span>{{user.gender}}</span>
     </div>
     <div class="proflie-field mb-3">
-      <label>Date of birth:</label>
-      <span>Jan,06,1979</span>
+      <label>Fecha Cumpleaños:</label>
+      <span>{{user.birthDate | date}}</span>
     </div>
     <div class="proflie-field mb-3">
-      <label>Mobile Number:</label>
-      <span>+120 256 254 125</span>
-    </div>
+      <label>Teléfono:</label>
+      <span>{{user.mobile}}</span>
+    </div>   
     <div class="proflie-field mb-3">
-      <label>location:</label>
-      <span>New York</span>
-    </div>
-    <div class="proflie-field mb-3">
-      <label>E-mail id:</label>
-      <span>johnDoe@doe.com</span>
+      <label>Correo:</label>
+      <span>{{user.email}}</span>
     </div>
 
-    <button mat-raised-button color="accent" [routerLink]="['edit']" [queryParams]="{type:'info'}">Edit</button>
+    <button mat-raised-button color="accent" [routerLink]="['edit']" [queryParams]="{type:'info'}">Editar</button>
   </div>
 </mat-card>

@@ -233,4 +233,20 @@ export class ShoppingService {
     localStorage.removeItem("cart_item");
     localStorage.setItem("cart_item", JSON.stringify(products));
   }
+
+  public removeBuyProducts() {
+		localStorage.removeItem("byProductDetails");
+		this.buyUserCartProducts = JSON.parse(localStorage.getItem("byProductDetails")!)
+	}
+
+  public addBuyUserDetails(formdata) {
+		localStorage.setItem("user", JSON.stringify(formdata));
+
+		let product = JSON.parse(localStorage.getItem("cart_item")!)
+		localStorage.setItem("byProductDetails", JSON.stringify(product));
+		this.buyUserCartProducts = JSON.parse(localStorage.getItem("byProductDetails")!)
+
+		localStorage.removeItem("cart_item");
+		this.calculateLocalCartProdCounts();
+	}
 }

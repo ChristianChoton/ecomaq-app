@@ -31,9 +31,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ToastaModule } from 'ngx-toasta';
 import { BidiModule } from '@angular/cdk/bidi';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -126,9 +123,6 @@ export function createTranslateLoader(http: HttpClient) {
 		ReactiveFormsModule,
 		LoadingBarRouterModule,
 		LoadingBarModule,
-		AngularFireModule.initializeApp(environment.firebase, 'embryo'),
-		AngularFirestoreModule,
-		AngularFireDatabaseModule,
 		ToastaModule.forRoot(),
 		BidiModule,
 		TranslateModule.forRoot({

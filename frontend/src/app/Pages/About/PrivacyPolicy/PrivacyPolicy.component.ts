@@ -13,7 +13,7 @@ export class PrivacyPolicyComponent implements OnInit {
    constructor(public embryoService : EmbryoService) { }
 
    ngOnInit() {
-      this.embryoService.getPrivacyPolicy().valueChanges().subscribe(res => {this.privacyPolicyData = res});
+      //this.embryoService.getPrivacyPolicy().valueChanges().subscribe(res => {this.privacyPolicyData = res});
    }
 
 }

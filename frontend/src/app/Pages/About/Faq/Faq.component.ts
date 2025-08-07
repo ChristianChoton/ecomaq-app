@@ -13,7 +13,7 @@ export class FaqComponent implements OnInit {
    constructor(public embryoService : EmbryoService) { }
 
    ngOnInit() {
-      this.embryoService.getFaq().valueChanges().subscribe(res => {this.faqData = res});
+      //this.embryoService.getFaq().valueChanges().subscribe(res => {this.faqData = res});
    }
 
 }

@@ -5,31 +5,32 @@
             <div class="user-info">
                <div fxLayoutAlign="flex-start">
                   <div class="login-user-img">
-                    <img src="assets/images/user-4.jpg" width="70" alt="Active User">
+                    <img src="assets/images/user.jpg" width="70" alt="Active User">
                   </div>
                   <div class="px-3">
-                    <h4>Hi, John Doe</h4>
-                    <div class="text-muted text-xl">johndoe@deo.com</div>
+                    <h2 style="margin-bottom: 0;">Bienvenido, {{user.firstName}} {{user.lastName}}</h2>
+                    <div class="text-muted text-xl">{{user.email}}</div>
                   </div>
                </div>
             </div>
             <div fxLayout="row wrap" class="col-gap mx-0">
                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20" class="user-nav-list">
                   <mat-list role="list">
+                     <mat-list-item role="listitem">
+                        <a [routerLink]="['/account/profile']" routerLinkActive="tab-active">
+                           <span>
+                              <i class="material-icons">account_circle</i>Perfil
+                           </span>  
+                        </a>
+                    </mat-list-item>
                     <mat-list-item role="listitem">
                         <a [routerLink]="['/account/order-history']" routerLinkActive="tab-active">
                            <i class="material-icons">history</i>
-                           <span> Order History</span> 
+                           <span> Historial de Ordenes</span> 
                         </a>
                      </mat-list-item>
-                    <mat-list-item role="listitem">
-                        <a [routerLink]="['/account/profile']" routerLinkActive="tab-active">
-                           <span>
-                              <i class="material-icons">account_circle</i>Profile
-                          </span>
-                        </a>
-                     </mat-list-item>
-                     <mat-list-item role="listitem"> 
+                  
+                     <!-- <mat-list-item role="listitem"> 
                         <a [routerLink]="['/account/address']" routerLinkActive="tab-active">
                            <i class="material-icons">location_on</i> 
                            <span>Addresses</span> 
@@ -40,7 +41,7 @@
                            <i class="material-icons">credit_card</i> 
                            <span>Saved Cards</span> 
                         </a>
-                     </mat-list-item>
+                     </mat-list-item> -->
                   </mat-list>
                </div>
                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80" class="user-content-wrapper">

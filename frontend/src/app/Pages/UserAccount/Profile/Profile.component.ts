@@ -1,4 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../../services/http.service';
+import { User } from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-Profile',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-   constructor() { }
+   constructor(private http: HttpService) { }
+
+   user: User = {} as User;
 
    ngOnInit() {
+    this.http.getMe().subscribe(u => this.user = u);
    }
 
 }

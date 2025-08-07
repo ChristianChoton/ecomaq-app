@@ -1,7 +1,7 @@
 import { Product } from "../models/product.model";
 import { ProductResponse } from "../reponse-models/product-response.model";
 
-export function toModel(p: ProductResponse): Product {
+export function productToModel(p: ProductResponse): Product {
   return {
     id: p._id,
     name: p.name,

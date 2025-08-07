@@ -24,19 +24,15 @@ const mongoose = require('mongoose');
 const app      = require('./app');
 
 const PORT       = process.env.PORT       || 3000;
-//const MONGO_URI  = process.env.MONGO_URI  || 'mongodb://localhost:27017/tienda';
-const MONGO_URI = 'mongodb+srv://cricca0707:TpEgc9bOxhrpFrGF@cluster0.ckv1pet.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-/* ───── Conexión a MongoDB ───────────────────────────────────────────── */
+const MONGO_URI  = process.env.MONGO_URI
+
 mongoose.connect(MONGO_URI, {
-  // Opciones modernas recomendadas
   useNewUrlParser:    true,
   useUnifiedTopology: true,
-  // maxPoolSize: 10   // Ajusta tu pool si lo necesitas
 })
 .then(() => {
   console.log('✅  MongoDB conectado');
 
-  /* ───── Arranque del servidor ─────────────────────────────────────── */
   app.listen(PORT, () =>
     console.log(`🚀  API escuchando en http://localhost:${PORT}/api`)
   );
@@ -46,12 +42,11 @@ mongoose.connect(MONGO_URI, {
   process.exit(1);
 });
 
-/* ───── Manejo de errores de proceso ─────────────────────────────────── */
 process.on('unhandledRejection', (reason) => {
   console.error('⚠️  Unhandled Rejection:', reason);
 });
 
 process.on('uncaughtException', (err) => {
   console.error('💥  Uncaught Exception:', err);
-  process.exit(1);                   // Salida segura; usa PM2 / forever para reinicios
+  process.exit(1);                   
 });

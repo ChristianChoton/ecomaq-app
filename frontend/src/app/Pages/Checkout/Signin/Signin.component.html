@@ -1,26 +1,25 @@
   
-<embryo-PageTitle heading="Checkout"></embryo-PageTitle>
+<embryo-PageTitle heading="Verificación"></embryo-PageTitle>
 
-<div class="bg-white shop-by-category section-gap" *ngIf="(embryoService.localStorageCartProducts && embryoService.localStorageCartProducts.length>0); else elseBlock">
+<div class="bg-white shop-by-category section-gap" *ngIf="(shopping.localStorageCartProducts && shopping.localStorageCartProducts.length>0); else elseBlock">
   <div class="checkout-option">
     <div class="container">
       <div class="view-cart text-right mb-5">
-        <button mat-raised-button color="accent" (click)="toggleRightSidenav()">Show Order Detail :
-          {{getCartProducts() | currency:embryoService?.currency}}</button>
+        <button mat-raised-button color="accent" (click)="toggleRightSidenav()">Ver detalle de orden :
+          {{getCartProducts() | currency:shopping?.currency}}</button>
       </div>
       <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
         <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
           <mat-card>
-            <h4>User Sign In</h4>
-           <embryo-SignIn></embryo-SignIn>
+            <h1 class="mt-4 mr-4 ml-4">Iniciar sesión</h1>
+            <embryo-SignIn class="mb-4 ml-4 mr-4" (loginEvent)="handleLogin($event)"></embryo-SignIn>
           </mat-card>
         </div>
         <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
           <mat-card>
-            <h4>Guest Checkout</h4>
-            <p>Proceed to checkout and create an account later.</p>
-            <button color="accent" class="button-lg mb-3" mat-raised-button [routerLink]="['/checkout/payment']">Continue
-              as Guest</button>
+            <h1 class="mt-4 mr-4 ml-4">Continuar como invitado</h1>
+            <p class="ml-4 mr-4">Proceda al pago y cree una cuenta más tarde.</p>
+            <button color="accent" class="button-lg mb-3 ml-4 mr-4" mat-raised-button [routerLink]="['/checkout/payment']">Continuar</button>
           </mat-card>
         </div>
       </div>

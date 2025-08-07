@@ -7,7 +7,7 @@ const signToken = (id) =>
 
 exports.register = asyncHandler(async (req, res) => {
   const { fullName, email, password } = req.body;
-  const user = await User.create({ fullName, email, password });
+  const user = await User.create({ fullName, email, password, firstName, lastName, gender, birthDate, mobile });
   const token = signToken(user._id);
   res.status(201).json({ token, user: { id: user._id, fullName, email } });
 });
@@ -19,5 +19,7 @@ exports.login = asyncHandler(async (req, res) => {
     return res.status(400).json({ msg: 'Credenciales inválidas' });
 
   const token = signToken(user._id);
-  res.json({ token, user: { id: user._id, fullName: user.fullName, email } });
+  res.json({ token });
 });
+
+

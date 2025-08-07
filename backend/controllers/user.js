@@ -2,7 +2,8 @@ const User = require('../models/user');
 const asyncHandler = require('../helpers/asyncHandler');
 
 exports.getMe = asyncHandler(async (req, res) => {
-  res.json(req.user); 
+  const { __v, createdAt, updatedAt, ...safeUser } = req.user.toObject();
+  res.json(safeUser);
 });
 
 exports.updateMe = asyncHandler(async (req, res) => {
@@ -11,7 +12,7 @@ exports.updateMe = asyncHandler(async (req, res) => {
   const user = await User.findByIdAndUpdate(req.user._id, updates, {
     new: true,
     runValidators: true,
-  });
+  })
   res.json(user);
 });
 

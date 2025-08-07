@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormControl, UntypedFormGroup, UntypedFormBuilder,FormArray, Validators } from '@angular/forms';
 import { EmbryoService } from '../../../services/Embryo.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { ShoppingService } from '../../../services/shopping.service';
+import { HelperService } from '../../../services/helper.service';
 
 @Component({
   selector: 'app-Payment',
@@ -67,11 +69,12 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
    paymentFormOne   : UntypedFormGroup;
 
-   constructor(public embryoService : EmbryoService, 
+   constructor(public shopping : ShoppingService, 
                private formGroup : UntypedFormBuilder,
-               public router: Router) {
+               public router: Router,
+               public helper: HelperService) {
 
-      this.embryoService.removeBuyProducts();
+      this.shopping.removeBuyProducts();
    }
 
    ngOnInit() {
@@ -80,19 +83,11 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          user_details       : this.formGroup.group({
             first_name         : ['', [Validators.required]],
             last_name          : ['', [Validators.required]],
-            street_name_number : ['', [Validators.required]],
-            apt                : ['', [Validators.required]],
-            zip_code           : ['', [Validators.required]],
+            street_name_number : ['', [Validators.required]],  
             city_state         : ['', [Validators.required]],
             country            : ['', [Validators.required]],
             mobile             : ['', [Validators.required]],
-            email              : ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-            share_email        : ['', [Validators.pattern(this.emailPattern)]],
-         }),
-         offers             : this.formGroup.group({
-            discount_code   : [''],
-            card_type       : [1],
-            card_type_offer_name  : [null]
+            email              : ['', [Validators.required, Validators.pattern(this.emailPattern)]]            
          }),
          payment            : this.formGroup.group({
             card_number     : ['', [Validators.required]],
@@ -125,19 +120,19 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    }
 
    public toggleRightSidenav() {
-      this.embryoService.paymentSidenavOpen = !this.embryoService.paymentSidenavOpen;
+      this.helper.paymentSidenavOpen = !this.helper.paymentSidenavOpen;
    }
 
    public getCartProducts() {
       let total = 0;
-      if(this.embryoService.localStorageCartProducts && this.embryoService.localStorageCartProducts.length>0) {
-         for(let product of this.embryoService.localStorageCartProducts) {
+      if(this.shopping.localStorageCartProducts && this.shopping.localStorageCartProducts.length>0) {
+         for(let product of this.shopping.localStorageCartProducts) {
             if(!product.quantity){
                product.quantity = 1;
             }
             total += (product.price*product.quantity);
          }
-         total += (this.embryoService.shipping+this.embryoService.tax);
+         total += (this.shopping.shipping+this.shopping.tax);
          return total;
       } 
       return total; 
@@ -201,7 +196,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    public finalStep() {
       let paymentGroup = <UntypedFormGroup>(this.paymentFormOne.controls['payment']);
       if(paymentGroup.valid) {
-         this.embryoService.addBuyUserDetails(this.paymentFormOne.value);
+         this.shopping.addBuyUserDetails(this.paymentFormOne.value);
          this.router.navigate(['/checkout/final-receipt']);
       } else {
          for (let i in paymentGroup.controls) {
