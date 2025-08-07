@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MachineryDetailComponent } from './machinery-detail/machinery-detail.component';
 import { MachineryListComponent } from './machinery-list/machinery-list.component';
 import { RouterModule } from '@angular/router';
-import { GlobalModule } from '../../Global/Global.module';
 import { MachineryRoutes } from './machinery.routing';
 import { DataViewModule } from 'primeng/dataview';
 import { ButtonModule } from 'primeng/button';
@@ -17,7 +16,6 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    GlobalModule,
     RouterModule,
     SharedModule,
     DataViewModule,

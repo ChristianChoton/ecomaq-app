@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { GlobalModule } from '../../Global/Global.module';
 import { RouterModule } from '@angular/router';
 import { ProductsRoutes } from './products.routing';
 import { DataViewModule } from 'primeng/dataview';
@@ -18,7 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     CommonModule,
-    GlobalModule,
     RouterModule,
     SharedModule,
     DataViewModule,

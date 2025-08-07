@@ -6,7 +6,7 @@ import { Product } from "../../../core/models/product.model";
 import { switchMap } from "rxjs";
 
 @Component({
-  selector: "app-machinery-detail",
+  selector: "machinery-detail",
   templateUrl: "./machinery-detail.component.html",
   styleUrls: ["./machinery-detail.component.scss"],
 })

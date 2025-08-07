@@ -1,0 +1,38 @@
+  
+<title-page heading="Verificación"></title-page>
+
+<div class="bg-white shop-by-category section-gap" *ngIf="(shopping.localStorageCartProducts && shopping.localStorageCartProducts.length>0); else elseBlock">
+  <div class="checkout-option">
+    <div class="container">
+      <div class="view-cart text-right mb-5">
+        <button mat-raised-button color="accent" (click)="toggleRightSidenav()">Ver detalle de orden :
+          {{getCartProducts() | currency:shopping?.currency}}</button>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
+        <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+          <mat-card>
+            <h1 class="mt-4 mr-4 ml-4">Iniciar sesión</h1>
+            <sigin class="mb-4 ml-4 mr-4" (loginEvent)="handleLogin($event)"></sigin>
+          </mat-card>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+          <mat-card>
+            <h1 class="mt-4 mr-4 ml-4">Continuar como invitado</h1>
+            <p class="ml-4 mr-4">Proceda al pago y cree una cuenta más tarde.</p>
+            <button color="accent" class="button-lg mb-3 ml-4 mr-4" mat-raised-button [routerLink]="['/checkout/payment']">Continuar</button>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="section-gap-lg text-center">
+    <div class="mb-4">
+    <img src="assets/images/empty-cart.png" height="128" width="128" alt="cart-empty">
+  </div>
+    <h4> Tu bolsa esta vacía.</h4>
+    <a href="javascript:void(0)" class="primary-color" [routerLink]="['/']">Ir a comprar</a>
+  </div>
+</ng-template>
+

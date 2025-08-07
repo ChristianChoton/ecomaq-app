@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ToastaService, ToastaConfig, ToastOptions } from 'ngx-toasta';
 
-import { ReviewPopupComponent } from '../Global/ReviewPopup/ReviewPopup.component';
-import { ConfirmationPopupComponent } from '../Global/ConfirmationPopup/ConfirmationPopup.component';
 
 interface Response {
   data     : any;
@@ -64,28 +62,28 @@ export class EmbryoService {
 
 	public reviewPopup(singleProductDetails, reviews)
 	{
-		let review: MatDialogRef<ReviewPopupComponent>;
-		const dialogConfig = new MatDialogConfig();
-		if(this.isDirectionRtl) {
-			dialogConfig.direction = 'rtl';
-		} else {
-			dialogConfig.direction = 'ltr';
-		}
+		// let review: MatDialogRef<ReviewPopupComponent>;
+		// const dialogConfig = new MatDialogConfig();
+		// if(this.isDirectionRtl) {
+		// 	dialogConfig.direction = 'rtl';
+		// } else {
+		// 	dialogConfig.direction = 'ltr';
+		// }
 
-		review = this.dialog.open(ReviewPopupComponent, dialogConfig);
-		review.componentInstance.singleProductDetails = singleProductDetails;
-		review.componentInstance.reviews = reviews;
+		// review = this.dialog.open(ReviewPopupComponent, dialogConfig);
+		// review.componentInstance.singleProductDetails = singleProductDetails;
+		// review.componentInstance.reviews = reviews;
 
-		return review.afterClosed();
+		// return review.afterClosed();
 	}
 
 	public confirmationPopup(message:string)
 	{
-		let confirmationPopup: MatDialogRef<ConfirmationPopupComponent>;
-		confirmationPopup = this.dialog.open(ConfirmationPopupComponent);
-		confirmationPopup.componentInstance.message = message;
+		// let confirmationPopup: MatDialogRef<ConfirmationPopupComponent>;
+		// confirmationPopup = this.dialog.open(ConfirmationPopupComponent);
+		// confirmationPopup.componentInstance.message = message;
 
-		return confirmationPopup.afterClosed();
+		// return confirmationPopup.afterClosed();
 	}
 
 	public getProducts() {

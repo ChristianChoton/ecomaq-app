@@ -1,0 +1,43 @@
+<div class="inner-container">
+   <div class="bg-white final-receipt-page section-gap">
+      <div class="account-info">
+         <div class="container">
+            <div class="user-info">
+               <div fxLayoutAlign="flex-start">
+                  <div class="login-user-img">
+                    <img src="assets/images/user.jpg" width="70" alt="Active User">
+                  </div>
+                  <div class="px-3">
+                    <h2 style="margin-bottom: 0;">Bienvenido, {{user.firstName}} {{user.lastName}}</h2>
+                    <div class="text-muted text-xl">{{user.email}}</div>
+                  </div>
+               </div>
+            </div>
+            <div fxLayout="row wrap" class="col-gap mx-0">
+               <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20" class="user-nav-list">
+                  <mat-list role="list">
+                     <mat-list-item role="listitem">
+                        <a [routerLink]="['/account/profile']" routerLinkActive="tab-active">
+                           <span>
+                              <i class="material-icons">account_circle</i>Perfil
+                           </span>  
+                        </a>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <a [routerLink]="['/account/order-history']" routerLinkActive="tab-active">
+                           <i class="material-icons">history</i>
+                           <span> Historial de Ordenes</span> 
+                        </a>
+                     </mat-list-item>
+                  </mat-list>
+               </div>
+               <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80" class="user-content-wrapper">
+                  <div class="tab-container">
+                    <router-outlet></router-outlet>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

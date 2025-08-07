@@ -36,23 +36,15 @@ export const AppRoutes : Routes = [
          },
          {
             path: 'session',loadChildren: ()=>
-            import('./Pages/Session/Session.module').then (m => m.SessionModule)
+            import('./views/payment/payment.module').then(m => m.PaymentModule)
          },
          {
             path: 'checkout',loadChildren: ()=>
-            import('./Pages/Checkout/Checkout.module').then (m => m.CheckoutModule)
-         },
-         {
-            path: '',loadChildren: ()=>
-            import('./Pages/About/About.module').then( m=> m.AboutModule)
-         },
-         {
-            path: 'blogs',loadChildren: ()=>
-            import('./Pages/Blogs/Blogs.module').then (m => m.BlogsModule)
+           import('./views/payment/payment.module').then(m => m.PaymentModule)
          },
          {
             path: 'account',loadChildren: ()=>
-            import('./Pages/UserAccount/UserAccount.module').then (m => m.UserAccountModule)
+            import('./views/account/account.module').then (m => m.AccountModule)
          }
       ]
    },

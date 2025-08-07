@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GlobalModule } from '../../Global/Global.module';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart.component';
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -14,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [CartComponent],
   imports: [
     CommonModule,
-    GlobalModule,
     SharedModule,
     RouterModule,
     MatFormFieldModule,

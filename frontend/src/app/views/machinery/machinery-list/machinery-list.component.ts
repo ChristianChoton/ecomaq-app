@@ -4,7 +4,7 @@ import { HttpService } from '../../../services/http.service';
 import { Product } from '../../../core/models/product.model';
 
 @Component({
-  selector: 'app-machinery-list',
+  selector: 'machinery-list',
   templateUrl: './machinery-list.component.html',
   styleUrls: ['./machinery-list.component.scss']
 })

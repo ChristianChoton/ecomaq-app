@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { ConfirmationPopupComponent } from "../Global/ConfirmationPopup/ConfirmationPopup.component";
+import { ConfirmationPopupComponent } from "../shared/confirmation-popup/confirmation-popup.component";
+
 
 @Injectable()
 export class PopupService {

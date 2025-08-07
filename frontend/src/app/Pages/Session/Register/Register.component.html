@@ -13,16 +13,16 @@
               <form class="mb-4 ml-4 mr-4">
                 <div class="mb-4">
                   <mat-form-field class="w-100">
-                    <input matInput type="text" placeholder="Nombre" required [(ngModel)]="user.firstName">
+                    <input matInput type="text" placeholder="Nombre" required [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="w-100">
-                    <input matInput type="text" placeholder="Apellido" required [(ngModel)]="user.lastName">
+                    <input matInput type="text" placeholder="Apellido" required [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="w-100">
-                    <input matInput type="email" placeholder="Correo" required [(ngModel)]="user.email">
+                    <input matInput type="email" placeholder="Correo" required [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="w-100">
-                    <input matInput type="password" placeholder="Contraseña" required [(ngModel)]="user.password">
+                    <input matInput type="password" placeholder="Contraseña" required [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                 </div>
                 <div class="mb-4">

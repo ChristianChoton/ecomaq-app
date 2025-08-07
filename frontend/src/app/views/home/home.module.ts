@@ -8,7 +8,6 @@ import { CommonModule } from "@angular/common";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from "./home.component";
 import { ProductCardComponent } from "./product-card/product-card.component";
-import { GlobalModule } from "../../Global/Global.module";
 import { SharedModule } from "../../shared/shared.module";
 import { PageSliderComponent } from './page-slider/page-slider.component';
 import { MatButtonModule } from "@angular/material/button";
@@ -17,7 +16,6 @@ import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
     imports: [
-        GlobalModule,
         SharedModule,
         SlickCarouselModule,
         MatTabsModule,

@@ -12,7 +12,6 @@ import { HeaderUserProfileComponent } from './header-user-profile/header-user-pr
 import { ShopDetailsComponent } from './shop-details/shop-details.component';
 import { GridComponent } from './grid/grid.component';
 import { ProductGridComponent } from './product-grid/product-grid.component';
-import { GlobalModule } from '../Global/Global.module';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -25,7 +24,13 @@ import { BarRatingModule } from 'ngx-bar-rating';
 import { FeaturesComponent } from './features/features.component';
 import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
 import { TimerCountComponent } from './timer-count/timer-count.component';
-
+import { SiginComponent } from './sigin/sigin.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { ImageZoomComponent } from './image-zoom/image-zoom.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,10 @@ import { TimerCountComponent } from './timer-count/timer-count.component';
     AddToCartComponent,
     FeaturesComponent,
     DealOfDayComponent,
-    TimerCountComponent
+    TimerCountComponent,
+    SiginComponent,
+    ImageZoomComponent,
+    ConfirmationPopupComponent
   ],
   imports: [
     CommonModule,
@@ -55,8 +63,12 @@ import { TimerCountComponent } from './timer-count/timer-count.component';
     MatGridListModule,
     MatCardModule,
     FlexLayoutModule,
-    GlobalModule,
-    BarRatingModule
+    BarRatingModule,
+    MatCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDialogModule
   ],
   exports: [
     LogoComponent,
@@ -71,7 +83,10 @@ import { TimerCountComponent } from './timer-count/timer-count.component';
     AddToCartComponent,
     FeaturesComponent,
     DealOfDayComponent,
-    TimerCountComponent
+    TimerCountComponent,
+    SiginComponent,
+    ImageZoomComponent,
+    ConfirmationPopupComponent
   ]
 })
 export class SharedModule { }

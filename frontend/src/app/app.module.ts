@@ -40,8 +40,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { environment } from '../environments/environment';
 
 import { AppRoutes } from './app-routing';
-import { GlobalModule } from './Global/Global.module';
-
 
 import { EmbryoService } from './services/Embryo.service';
 
@@ -58,7 +56,6 @@ import { SidebarPaymentDetailComponent } from './layout/sidebar-payment-detail/s
 import { NotFoundComponent } from './Pages/NotFound/NotFound.component';
 
 
-import { AdminPanelModule } from './AdminPanel/admin-panel.module';
 import { HomeModule } from './views/home/home.module';
 import { CartModule } from './views/cart/cart.module';
 
@@ -92,7 +89,6 @@ export function createTranslateLoader(http: HttpClient) {
 		BrowserModule.withServerTransition({appId: 'embryo-seo-pre'}),
 		BrowserAnimationsModule,
 		RouterModule.forRoot(AppRoutes, { onSameUrlNavigation: 'reload'}),
-		GlobalModule,
 		MatButtonModule,
 		FlexLayoutModule,
 		MatCardModule,
@@ -135,7 +131,6 @@ export function createTranslateLoader(http: HttpClient) {
 		SlickCarouselModule,
 		HomeModule,
 		CartModule,
-		AdminPanelModule,
 		ToolbarModule,
 		SharedModule
   ],

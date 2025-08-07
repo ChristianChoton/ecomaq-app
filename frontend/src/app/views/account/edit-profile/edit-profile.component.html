@@ -1,0 +1,46 @@
+<mat-card *ngIf="type == 'info'">
+  <h2 style="padding-left: 2rem;padding-right: 2rem;padding-top: 2rem;"> Editar Información del Perfil</h2>
+  <div fxLayout="row wrap" class="col-gap" style="padding-left: 2rem;padding-right: 2rem;padding-bottom: 2rem;">
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+      <form [formGroup] = "info">
+        <div class="example-container">
+          <mat-form-field class="w-100 mb-3">
+            <input matInput placeholder="Nombre" formControlName="first_name">
+            <mat-error *ngIf="info.get('first_name').hasError('required') && info.get('first_name').touched">Este campo no debe estar vacío.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100 mb-3">
+            <input matInput placeholder="Apellido" formControlName="last_name">
+            <mat-error *ngIf="info.get('last_name').hasError('required') && info.get('last_name').touched">Este campo no debe estar vacío.</mat-error>
+          </mat-form-field>
+          <div class="mb-3">
+            <mat-radio-group formControlName="gender">
+              <mat-radio-button class="mr-2" value="Masculino">Masculino</mat-radio-button>
+              <mat-radio-button value="Femenino">Femenino</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div>
+            <mat-form-field class="w-100 mb-3">
+              <input matInput [matDatepicker]="picker" placeholder="Fecha de cumpleaños" formControlName="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="info.get('date').hasError('required') && info.get('date').touched">Este campo no debe estar vacío.</mat-error>
+            </mat-form-field>
+          </div>
+          <mat-form-field class="w-100 mb-3">
+            <input matInput placeholder="Teléfono" formControlName="phone_number">
+            <mat-error *ngIf="info.get('phone_number').hasError('required') && info.get('phone_number').touched">Este campo no debe estar vacío.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-100 mb-3">
+            <input matInput type="email" placeholder="Correo" formControlName="email">
+            <mat-error *ngIf="info.get('email').hasError('required') && info.get('email').touched">Este campo no debe estar vacío.</mat-error>
+            <mat-error *ngIf="info.get('email').hasError('pattern') && info.get('email').touched">Por favor, introduzca un correo electrónico válido.</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="accent" (click)="submitProfileInfo()">Guardar</button>
+        </div>
+      </form>
+    </div>
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="edit-profile" style="background-image: url(assets/images/user-edit.png)">
+    </div>
+  </div>
+</mat-card>

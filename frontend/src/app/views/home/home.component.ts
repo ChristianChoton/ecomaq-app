@@ -10,7 +10,7 @@ import { HttpService } from "../../services/http.service";
 import { Product } from "../../core/models/product.model";
 
 @Component({
-  selector: "app-home",
+  selector: "home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
