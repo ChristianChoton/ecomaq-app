@@ -9,6 +9,8 @@ import { environment } from "../../environments/environment";
 import { Token } from "../core/models/token.model";
 import { UserResponse } from "../core/reponse-models/user-response.model";
 import { User } from "../core/models/user.model";
+import { Auth } from "../core/models/auth.model";
+import { UserCreate } from "../core/models/user-create.model";
 
 @Injectable()
 export class HttpService {
@@ -51,7 +53,7 @@ export class HttpService {
       .pipe(map(productToModel));
   }
 
-  public authLogin(body: any): Observable<Token> {
+  public authLogin(body: Auth): Observable<Token> {
     return this.http.post<Token>(`${this.baseRute}auth/login`, body);
   }
 
@@ -71,12 +73,17 @@ export class HttpService {
       .pipe(map(userToModel));
   }
 
+  public createUser(body: UserCreate): Observable<Token> {
+    return this.http.post<Token>(`${this.baseRute}auth/register`, body, {
+      headers: this.headers(),
+    });
+  }
+
   private headers(): HttpHeaders {
-    const token = localStorage.getItem('auth_token');
+    const token = localStorage.getItem("auth_token");
     return new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization:
-        `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     });
   }
 }

@@ -35,7 +35,7 @@ import { SignInComponent } from './SignIn/SignIn.component';
 import { ForgotPasswordComponent } from './ForgotPassword/ForgotPassword.component';
 import { ThankYouComponent } from './ThankYou/ThankYou.component';
 import { SharedModule } from '../../shared/shared.module';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
    imports: [
       CommonModule,
@@ -67,6 +67,7 @@ import { SharedModule } from '../../shared/shared.module';
       MatGridListModule,
       GlobalModule,
       SharedModule,
+      FormsModule
    ],
    declarations: [
       RegisterComponent,

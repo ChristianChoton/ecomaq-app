@@ -66,14 +66,13 @@ export class EditProfileComponent implements OnInit {
   submitProfileInfo() {
     if (this.info.valid) {
       const body = userToResponse(this.user);
-      console.log(body)
       this.http.updateMe(body).subscribe({
          next: data => console.log(data),
          error: e => console.log(e),
          complete: () => {
-            // this.router.navigate(["/account/profile"]).then(() => {
-            //       this.toastyService.success(this.toastOption);
-            //       });
+            this.router.navigate(["/account/profile"]).then(() => {
+                  this.toastyService.success(this.toastOption);
+                  });
          }
       })      
     } else {

@@ -9,29 +9,29 @@
           </div>
           <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
             <mat-card class="register-form form-margin">
-              <h4>Enter your details</h4>
-              <form>
+              <h1 class="mt-4 mr-4 ml-4">Ingresa la información</h1>
+              <form class="mb-4 ml-4 mr-4">
                 <div class="mb-4">
                   <mat-form-field class="w-100">
-                    <input matInput type="text" placeholder="First Name" required>
+                    <input matInput type="text" placeholder="Nombre" required [(ngModel)]="user.firstName">
                   </mat-form-field>
                   <mat-form-field class="w-100">
-                    <input matInput type="text" placeholder="Last Name" required>
+                    <input matInput type="text" placeholder="Apellido" required [(ngModel)]="user.lastName">
                   </mat-form-field>
                   <mat-form-field class="w-100">
-                    <input matInput type="email" placeholder="Email" required>
+                    <input matInput type="email" placeholder="Correo" required [(ngModel)]="user.email">
                   </mat-form-field>
                   <mat-form-field class="w-100">
-                    <input matInput type="password" placeholder="Enter Password" required>
+                    <input matInput type="password" placeholder="Contraseña" required [(ngModel)]="user.password">
                   </mat-form-field>
                 </div>
                 <div class="mb-4">
                   <mat-form-field class="w-100">
-                    <input matInput type="password" placeholder="Retype Password" required>
+                    <input matInput type="password" placeholder="Reescribir contraseña" required>
                   </mat-form-field>
                 </div>
-                <button color="accent" class="button-lg mb-3" mat-raised-button>Submit</button>
-              <div> Already have account? then <a class="accent-color" [routerLink]="['/session/signin']">Sign In</a></div>
+                <button color="accent" class="button-lg mb-3" mat-raised-button (click)="onCreate()">Crear</button>
+              <div> ¿Ya tienes cuenta? entonces <a class="accent-color" [routerLink]="['/session/signin']">Inicia sesión</a></div>
               </form>
             </mat-card>
           </div>

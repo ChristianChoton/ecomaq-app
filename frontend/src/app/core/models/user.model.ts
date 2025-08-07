@@ -1,6 +1,5 @@
 export interface User {
-    id: string;    
-    fullName: string;
+    id: string;  
     email: string;
     birthDate: Date,
     firstName: string,

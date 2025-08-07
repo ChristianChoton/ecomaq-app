@@ -6,10 +6,10 @@ const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
 exports.register = asyncHandler(async (req, res) => {
-  const { fullName, email, password } = req.body;
-  const user = await User.create({ fullName, email, password, firstName, lastName, gender, birthDate, mobile });
+  const { email, password, firstName, lastName } = req.body;
+  const user = await User.create({ email, password, firstName, lastName });
   const token = signToken(user._id);
-  res.status(201).json({ token, user: { id: user._id, fullName, email } });
+  res.status(201).json({ token });
 });
 
 exports.login = asyncHandler(async (req, res) => {
