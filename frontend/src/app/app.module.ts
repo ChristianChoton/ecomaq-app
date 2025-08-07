@@ -37,8 +37,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
-import { environment } from '../environments/environment';
-
 import { AppRoutes } from './app-routing';
 
 import { EmbryoService } from './services/Embryo.service';
