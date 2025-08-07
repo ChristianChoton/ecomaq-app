@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema({
   password:   { type: String, required: true, minlength: 6 },
   firstName:  { type: String, required: true, trim: true },
   lastName:   { type: String, required: true, trim: true },
-  gender:     { type: String, required: true, trim: true },
-  birthDate:  { type: Date, required: true },
-  mobile:     { type: String, required: true, trim: true },
+  gender:     { type: String, trim: true },
+  birthDate:  { type: Date },
+  mobile:     { type: String, trim: true },
   subscriptionLevel: {
     type: String,
     enum: ['free', 'basic', 'premium'],
