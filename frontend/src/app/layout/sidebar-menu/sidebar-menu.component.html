@@ -1,6 +1,6 @@
 <a mat-list-item (click)="onItemSelected(item)" [ngClass]="{'active': item.state ? router.isActive(item.state, true): false, 'expanded': expanded}">
 	<mat-icon>{{item.icon}}</mat-icon>
-	{{item.name | translate}}
+	{{item.name}}
 	<span fxFlex *ngIf="item.children && item.children.length">
 		<span fxFlex></span>
 		<mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">

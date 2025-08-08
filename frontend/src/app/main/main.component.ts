@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LoadingBarService } from '@ngx-loading-bar/core';
-import { TranslateService } from '@ngx-translate/core';
 import { finalize, interval, take, tap } from 'rxjs';
 import { MenuItems } from '../core/constants/menu-items';
 import { HelperService } from '../services/helper.service';
@@ -13,7 +12,7 @@ import { HelperService } from '../services/helper.service';
 export class MainComponent implements OnInit{
    timer = 0;
 
-   constructor(private loader : LoadingBarService, public menuItems: MenuItems, public translate: TranslateService, public helper: HelperService) {}
+   constructor(private loader : LoadingBarService, public menuItems: MenuItems, public helper: HelperService) {}
 
    ngOnInit() {
       this.startTimer();

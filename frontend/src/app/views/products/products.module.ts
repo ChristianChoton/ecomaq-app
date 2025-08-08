@@ -4,9 +4,6 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { RouterModule } from '@angular/router';
 import { ProductsRoutes } from './products.routing';
-import { DataViewModule } from 'primeng/dataview';
-import { ButtonModule } from 'primeng/button';
-import { TagModule } from 'primeng/tag';
 import { SharedModule } from '../../shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -19,9 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     RouterModule,
     SharedModule,
-    DataViewModule,
-    ButtonModule,
-    TagModule,
     MatButtonModule,
     RouterModule.forChild(ProductsRoutes),
   ]

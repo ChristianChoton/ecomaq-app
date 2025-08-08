@@ -12,6 +12,7 @@ export function productToModel(p: ProductResponse): Product {
     rating: p.rating,
     currency: p.currency,
     quantity: 0,
+    inventoryStatus: getInventaryStatus(p.stock),
 
     category: {
       id: p.category._id,
@@ -22,3 +23,16 @@ export function productToModel(p: ProductResponse): Product {
     }
   };
 }
+
+function getInventaryStatus(stock: number) {
+    if(stock >= 10) {
+      return 'INSTOCK'
+    }
+
+    if(stock < 10 && stock >= 0) {
+      return 'LOWSTOCK'
+    }
+
+    return 'OUTOFSTOCK'
+}
+

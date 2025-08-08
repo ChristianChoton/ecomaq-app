@@ -1,0 +1,41 @@
+<div class="px-2">
+  <div class="mb-4 mt-2">
+    <label for="nameFilter" class="block mb-3 font-bold">Nombre del producto</label>
+    <input
+      id="nameFilter"
+      type="text"
+      pInputText
+      [(ngModel)]="filters.name"
+      placeholder="Buscar por nombre"
+      (input)="applyFilters()"
+      class="w-full"
+    />
+  </div>
+
+  <div class="mb-4">
+    <label class="block mb-3 font-bold">Rango de precios ({{ filters.price[0] }} - {{ filters.price[1] }})</label>
+    <p-slider
+      [(ngModel)]="filters.price"
+      [min]="priceRange.min"
+      [max]="priceRange.max"
+      [range]="true"
+      (onSlideEnd)="applyFilters()"
+      [style]="{
+        'margin-right':'0.5rem',
+        'margin-left':'0.5rem'
+      }"
+    ></p-slider>
+  </div>
+ 
+  <div class="mb-4">
+    <label class="block mb-3 font-bold">Rating</label>
+    <p-rating
+      [(ngModel)]="filters.rating"
+      (onRate)="applyFilters()"
+      (onCancel)="applyFilters()"
+      [cancel]="true"
+    ></p-rating>
+  </div>
+
+  <button pButton label="Limpiar filtros" class="w-full p-button-secondary" (click)="resetFilters()" style="font-size: 12px;"></button>
+</div>

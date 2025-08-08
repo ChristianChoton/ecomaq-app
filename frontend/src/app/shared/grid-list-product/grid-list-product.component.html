@@ -1,0 +1,69 @@
+<p-card>
+  <p-dataView #dv [value]="products">
+    <ng-template pTemplate="list" let-products>
+      <div class="grid grid-nogutter">
+        <div class="col-12" *ngFor="let item of products; let first = first">
+          <div class="flex flex-column sm:flex-row sm:align-items-center gap-3 product-card" [ngClass]="{ 'border-top-1 surface-border': !first }">
+            <div class="md:w-10rem relative" [routerLink]="['/' + module, item.id]"  routerLinkActive="router-link-active">
+              <img
+                class="block xl:block mx-auto border-round w-full"
+                [src]="item.image"
+                [alt]="item.name"
+              />
+              <p-tag
+                [value]="item.inventoryStatus"
+                [severity]="getSeverity(item)"
+                class="absolute dark:!bg-surface-900"
+                [style.left.px]="4"
+                [style.top.px]="4"
+              />
+            </div>
+            <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
+              <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
+                <div [routerLink]="['/' + module, item.id]"  routerLinkActive="router-link-active">
+                  <span class="font-medium text-secondary text-sm">{{ item.category.name }}</span>
+                  <div class="font-medium text-500 mt-2">{{ item.name }}</div>
+                </div>
+                <div class="surface-100 p-1">
+                  <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2">
+                    <span class="text-900 font-medium text-sm">{{ item.rating }}</span>
+                    <i class="pi pi-star-fill rating"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-column md:align-items-end gap-5">
+                <span class="font-medium text-300">{{
+                  item.price | currency : item.currency
+                }}</span>
+                <div class="flex flex-row-reverse md:flex-row gap-2">
+                  <p-button
+                    icon="pi pi-heart"
+                    [outlined]="true"
+                    [style]="{
+                      'font-size': '13px',
+                      'background-color': '#fff',
+                      'border-color': '#FF4081',
+                      color: '#FF4081'
+                    }"
+                  />
+                  <p-button
+                    icon="pi pi-shopping-cart"
+                    class="flex-auto md:flex-initial white-space-nowrap buy-button"
+                    label="Comprar"
+                    [style]="{
+                      'font-size': '13px',
+                      'background-color': '#FF4081',
+                      'border-color': '#FF4081',
+                      color: '#fff'
+                    }"
+                    (onClick)="buyProduct(item)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</p-card>

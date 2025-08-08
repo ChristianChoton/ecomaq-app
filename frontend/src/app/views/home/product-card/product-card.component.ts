@@ -10,7 +10,7 @@ export class ProductCardComponent implements OnInit {
    @Input() product: Product;
    @Input() index   : any;
    @Input() type  : string = '';
-   @Input() module: string = '';
+   @Input() module: string;
 
    @Output() addToCart: EventEmitter<any> = new EventEmitter();
    @Output() addToWishlist: EventEmitter<any> = new EventEmitter();

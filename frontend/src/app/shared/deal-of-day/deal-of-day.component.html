@@ -3,7 +3,7 @@
      <div class="detail-thumb text-center">
        <mat-grid-list cols="1" rowHeight="1:1">
          <mat-grid-tile>
-           <a class="p-link" [routerLink]="['/products', singleProduct?.category.rute, singleProduct?.id]">
+           <a class="p-link" [routerLink]="['/products', singleProduct?.id]">
              <img width="626" height="800" [src]="singleProduct.image" alt="Deal Of The Day">
            </a>
          </mat-grid-tile>
@@ -24,7 +24,7 @@
        
        <timer-count [dateTime]="counterDateTime"></timer-count>
        <div>
-         <button mat-raised-button color="accent" [routerLink]="['/products', singleProduct?.category.rute, singleProduct?.id]">Compra ahora</button>
+         <button mat-raised-button color="accent" [routerLink]="['/products', singleProduct?.id]">Compra ahora</button>
        </div>
      </div>
      <mat-grid-list cols="3" rowHeight="1:1" gutterSize="20px" class="mat-gallery-grid">

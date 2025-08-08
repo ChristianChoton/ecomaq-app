@@ -59,6 +59,9 @@ export class ShoppingService {
     });
 
     if (!found) {
+      if(!data.quantity){
+        data.quantity = 1
+      }
       products.push(data);
     }
 

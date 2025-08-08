@@ -1,8 +1,5 @@
 <mat-card class="product-card" *ngIf="product" style="margin-bottom: 1px;">
-   <a class="p-link" [routerLink]="['/products', product?.id]" *ngIf="module === 'products'">
-     <img width="626" height="800" mat-card-image [src]="product.image" alt="Photo">
-   </a>
-   <a class="p-link" [routerLink]="['/machinery', product?.id]" *ngIf="module === 'machinery'">
+   <a class="p-link" [routerLink]="['/' + module, product?.id]">
      <img width="626" height="800" mat-card-image [src]="product.image" alt="Photo">
    </a>
    <div class="wishlist-icon {{index}}-wishlist" id="{{type}}-{{index}}-wishlist">
@@ -10,8 +7,7 @@
    </div>
   <mat-card-content class="product-content relative">
      <h4 class="font-bold">
-      <a [routerLink]="['/products', product?.id]" class="title-link" *ngIf="module === 'products'">{{product?.name}}</a> 
-      <a [routerLink]="['/machinery', product?.id]" class="title-link" *ngIf="module === 'machinery'">{{product?.name}}</a> 
+      <a [routerLink]="['/' + module, product?.id]" class="title-link">{{product?.name}}</a> 
      </h4>
      <div>
         <div fxFlex fxLayoutAlign="space-between">
@@ -25,8 +21,7 @@
       <add-to-cart [product]="product" (addToCart)="addToCartProduct($event)"></add-to-cart>
      </div>
      <div class="m-icon" *ngIf="!checkCartAlready(product)">
-         <button mat-fab [routerLink]="['/products', product?.id]" *ngIf="module === 'products'"><i  class="material-icons"> remove_red_eye </i></button>
-         <button mat-fab [routerLink]="['/machinery', product?.id]" *ngIf="module === 'machinery'"><i  class="material-icons"> remove_red_eye </i></button>
+         <button mat-fab [routerLink]="['/' + module, product?.id]"><i  class="material-icons"> remove_red_eye </i></button>
      </div>
   </mat-card-content>
 </mat-card>

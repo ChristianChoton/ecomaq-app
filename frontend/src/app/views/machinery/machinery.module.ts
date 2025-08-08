@@ -4,10 +4,8 @@ import { MachineryDetailComponent } from './machinery-detail/machinery-detail.co
 import { MachineryListComponent } from './machinery-list/machinery-list.component';
 import { RouterModule } from '@angular/router';
 import { MachineryRoutes } from './machinery.routing';
-import { DataViewModule } from 'primeng/dataview';
-import { ButtonModule } from 'primeng/button';
-import { TagModule } from 'primeng/tag';
 import { SharedModule } from '../../shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -18,9 +16,7 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     RouterModule,
     SharedModule,
-    DataViewModule,
-    ButtonModule,
-    TagModule,
+    MatButtonModule,
     RouterModule.forChild(MachineryRoutes),
   ]
 })

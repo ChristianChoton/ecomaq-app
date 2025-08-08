@@ -12,4 +12,5 @@ export interface Product {
     category: Category;
 
     quantity: number;
+    inventoryStatus: string;
 }

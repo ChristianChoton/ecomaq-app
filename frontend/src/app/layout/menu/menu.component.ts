@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItems } from '../../core/constants/menu-items';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -21,7 +20,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class MenuComponent {
 expanded       : boolean;
 
-   constructor(public menuItems: MenuItems,public router: Router, public translate: TranslateService) {}
+   constructor(public menuItems: MenuItems,public router: Router) {}
 
    public onItemSelected(item: any) {
       if (item.children && item.children.length) {

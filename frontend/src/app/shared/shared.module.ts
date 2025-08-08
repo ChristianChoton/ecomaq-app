@@ -31,6 +31,15 @@ import { MatInputModule } from '@angular/material/input';
 import { ImageZoomComponent } from './image-zoom/image-zoom.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
+import { GridListProductComponent } from './grid-list-product/grid-list-product.component';
+import { DataViewModule } from 'primeng/dataview';
+import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
+import { ProductFilterNavComponent } from './product-filter-nav/product-filter-nav.component';
+import { SliderModule } from 'primeng/slider';
+import { RatingModule } from 'primeng/rating';
+import { InputTextModule } from 'primeng/inputtext';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -49,7 +58,9 @@ import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-po
     TimerCountComponent,
     SiginComponent,
     ImageZoomComponent,
-    ConfirmationPopupComponent
+    ConfirmationPopupComponent,
+    GridListProductComponent,
+    ProductFilterNavComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +79,14 @@ import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-po
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    DataViewModule,
+    ButtonModule,
+    TagModule,
+    SliderModule,
+    RatingModule,
+    InputTextModule,
+    CardModule
   ],
   exports: [
     LogoComponent,
@@ -86,7 +104,9 @@ import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-po
     TimerCountComponent,
     SiginComponent,
     ImageZoomComponent,
-    ConfirmationPopupComponent
+    ConfirmationPopupComponent,
+    GridListProductComponent,
+    ProductFilterNavComponent
   ]
 })
 export class SharedModule { }

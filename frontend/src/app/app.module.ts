@@ -33,8 +33,6 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { ToastaModule } from 'ngx-toasta';
 import { BidiModule } from '@angular/cdk/bidi';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { AppRoutes } from './app-routing';
@@ -64,12 +62,6 @@ import { SharedModule } from './shared/shared.module';
 import { ShoppingService } from './services/shopping.service';
 import { HttpService } from './services/http.service';
 import { PopupService } from './services/popup.service';
-
-
-
-export function createTranslateLoader(http: HttpClient) {
-	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 @NgModule({
 	declarations: [
@@ -119,13 +111,6 @@ export function createTranslateLoader(http: HttpClient) {
 		LoadingBarModule,
 		ToastaModule.forRoot(),
 		BidiModule,
-		TranslateModule.forRoot({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: createTranslateLoader,
-				deps: [HttpClient]
-			}
-		}),
 		SlickCarouselModule,
 		HomeModule,
 		CartModule,
