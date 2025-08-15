@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     enum: ['free', 'basic', 'premium'],
     default: 'free'
   },
-
+  isAdmin:    { type: Boolean, default: false}
 }, { timestamps: true });
 
 userSchema.pre('save', async function (next) {
