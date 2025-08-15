@@ -20,3 +20,11 @@ exports.listMine = asyncHandler(async (req, res) => {
     .select(unselectProperties);
   res.json(comments);
 });
+
+exports.list = asyncHandler(async (req, res) => {
+  const comments = await Comment.find(filter)
+    .lean()
+    .select(unselectProperties)
+    .populate({ path: "user", select: unselectProperties });
+  res.json(comments);
+});

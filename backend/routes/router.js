@@ -35,6 +35,7 @@ router.get('/orders/:id', protect, ordCtl.getOne);
 
 router.post('/comments', protect, comCtl.create);
 router.get('/comments', protect, comCtl.listMine);
+router.get('/comments/all', protect, comCtl.list);
 // router.patch('/orders/:id/status', protect, ordCtl.updateStatus);
 
 module.exports = router;
