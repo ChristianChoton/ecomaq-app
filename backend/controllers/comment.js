@@ -22,7 +22,7 @@ exports.listMine = asyncHandler(async (req, res) => {
 });
 
 exports.list = asyncHandler(async (req, res) => {
-  const comments = await Comment.find(filter)
+  const comments = await Comment.find()
     .lean()
     .select(unselectProperties)
     .populate({ path: "user", select: unselectProperties });
