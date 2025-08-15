@@ -1,4 +1,4 @@
-const Comment = require("../models/commnet");
+const Comment = require("../models/comment");
 const asyncHandler = require("../helpers/asyncHandler");
 
 const unselectProperties = "-__v -updatedAt";
