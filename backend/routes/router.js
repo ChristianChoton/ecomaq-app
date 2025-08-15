@@ -4,6 +4,7 @@ const userCtl = require('../controllers/user');
 const catCtl  = require('../controllers/category');
 const prodCtl = require('../controllers/product');
 const ordCtl  = require('../controllers/order');
+const comCtl  = require('../controllers/comment');
 const { protect } = require('../middlewares/auth');
 
 const router = express.Router();
@@ -31,6 +32,9 @@ router.delete('/products/:id', protect, prodCtl.remove);
 router.post('/orders', protect, ordCtl.create);
 router.get('/orders', protect, ordCtl.listMine);
 router.get('/orders/:id', protect, ordCtl.getOne);
+
+router.post('/comments', protect, comCtl.create);
+router.get('/comments', protect, comCtl.listMine);
 // router.patch('/orders/:id/status', protect, ordCtl.updateStatus);
 
 module.exports = router;
