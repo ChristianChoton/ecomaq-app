@@ -8,15 +8,16 @@ const orderItemSchema = new mongoose.Schema({
 }, { _id: false });
 
 const orderSchema = new mongoose.Schema({
-  user:        { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  user:        { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
   items:       { type: [orderItemSchema], required: true },
   subtotal:    { type: Number, required: true },
   tax:         { type: Number, required: true },
+  shipper:     { type: Number, required: true },
   total:       { type: Number, required: true },
   status:      { 
     type: String, 
     enum: ['pending', 'paid', 'shipped', 'completed', 'canceled'], 
-    default: 'pending' 
+    default: 'completed' 
   },
   paymentRef:  { type: String } 
 }, { timestamps: true });

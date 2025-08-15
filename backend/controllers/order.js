@@ -1,41 +1,16 @@
 const Order = require('../models/order');
-const Product = require('../models/product');
 const asyncHandler = require('../helpers/asyncHandler');
 
-const buildOrderItems = async (items) => {
-  const lines   = [];
-  let subtotal  = 0;
-
-  for (const it of items) {
-    const prod = await Product.findById(it.product);
-    if (!prod) throw new Error(`Producto no encontrado: ${it.product}`);
-
-    const unitPrice = prod.price;
-    const lineTotal = unitPrice * (it.quantity || 1);
-    subtotal += lineTotal;
-
-    lines.push({
-      product : prod._id,
-      name    : prod.name,
-      unitPrice,
-      quantity: it.quantity || 1,
-    });
-  }
-  const tax   = +(subtotal * 0.18).toFixed(2);
-  const total = subtotal + tax;
-  return { lines, subtotal, tax, total };
-};
-
 exports.create = asyncHandler(async (req, res) => {
-  const { lines, subtotal, tax, total } = await buildOrderItems(req.body.items);
-
+  const { user, items, subtotal, tax, total, shipper, status } = req.body;
   const order = await Order.create({
-    user   : req.user._id,
-    items  : lines,
+    user,
+    items,
     subtotal,
     tax,
+    shipper,
     total,
-    status : 'pending',
+    status,
   });
 
   res.status(201).json(order);
