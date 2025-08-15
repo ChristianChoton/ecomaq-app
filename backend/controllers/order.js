@@ -1,7 +1,7 @@
 const Order = require("../models/order");
 const asyncHandler = require("../helpers/asyncHandler");
 
-const unselectProperties = "-__v -createdAt -updatedAt";
+const unselectProperties = "-__v -updatedAt";
 
 exports.create = asyncHandler(async (req, res) => {
   const { user, items, subtotal, tax, total, shipper, status } = req.body;
