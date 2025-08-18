@@ -4,10 +4,11 @@ const asyncHandler = require("../helpers/asyncHandler");
 const unselectProperties = "-__v -updatedAt";
 
 exports.create = asyncHandler(async (req, res) => {
-  const { user, detail } = req.body;
+  const { user, detail, rating } = req.body;
   const comment = await Comment.create({
     user,
-    detail
+    detail,
+    rating
   });
 
   res.status(201).json(comment);
