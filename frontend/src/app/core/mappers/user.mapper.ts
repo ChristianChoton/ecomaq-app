@@ -9,7 +9,8 @@ export function userToModel(u: UserResponse): User {
     birthDate: u.birthDate,
     email: u.email,
     gender: u.gender,
-    mobile: u.mobile
+    mobile: u.mobile,
+    isAdmin: u.isAdmin
   };
 }
 
@@ -22,6 +23,7 @@ export function userToResponse(u: User): UserResponse {
     email: u.email,
     gender: u.gender,
     mobile: u.mobile,
-    subscriptionLevel: 'free'
+    subscriptionLevel: 'free',
+    isAdmin: u.isAdmin
   };
 }

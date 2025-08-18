@@ -7,13 +7,18 @@ import {
 import { ShoppingService } from "../../../services/shopping.service";
 import { Router } from "@angular/router";
 import { HelperService } from "../../../services/helper.service";
+import { OrderItem } from "../../../core/models/order-item.model";
+import { productToOrderItem } from "../../../core/mappers/order-item.mapper";
+import { UserService } from "../../../services/user.service";
+import { HttpService } from "../../../services/http.service";
+import { OrderCreate } from "../../../core/models/order-create.model";
 
 @Component({
   selector: "payment-detail",
   templateUrl: "./detail.component.html",
   styleUrls: ["./detail.component.scss"],
 })
-export class DetailComponent implements OnInit{
+export class DetailComponent implements OnInit {
   step = 0;
   isDisabledPaymentStepTwo = true;
   isDisabledPaymentStepThree = false;
@@ -25,7 +30,9 @@ export class DetailComponent implements OnInit{
     public shopping: ShoppingService,
     private formGroup: UntypedFormBuilder,
     public router: Router,
-    public helper: HelperService
+    public helper: HelperService,
+    private _user: UserService,
+    private http: HttpService
   ) {
     this.shopping.removeBuyProducts();
   }
@@ -161,7 +168,32 @@ export class DetailComponent implements OnInit{
     );
     if (paymentGroup.valid) {
       this.shopping.addBuyUserDetails(this.paymentFormOne.value);
-      this.router.navigate(["/checkout/final-receipt"]);
+      const orderItems: OrderItem[] = this.shopping.buyUserCartProducts.map(
+        (p) => productToOrderItem(p)
+      );
+
+      let subTotal = 0;
+      for (let product of orderItems) {
+        subTotal += product.unitPrice * product.quantity;
+      }
+
+      const total = subTotal + this.shopping.shipping + this.shopping.tax;
+
+      const order: OrderCreate = {
+        user: this._user.getUser()?.id!,
+        items: orderItems,
+        subtotal: subTotal,
+        tax: this.shopping.tax,
+        shipper: this.shopping.shipping,
+        total: total,
+        status: "completed",
+      };
+
+      this.http.createOrder(order).subscribe({
+        next: (r) => console.log(r),
+        error: (e) => console.log(e),
+        complete: () => this.router.navigateByUrl('comment'),
+      });
     } else {
       for (let i in paymentGroup.controls) {
         paymentGroup.controls[i].markAsTouched();

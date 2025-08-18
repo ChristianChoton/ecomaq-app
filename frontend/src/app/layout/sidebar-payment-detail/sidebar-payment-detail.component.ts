@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { EmbryoService } from '../../services/Embryo.service';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { ShoppingService } from '../../services/shopping.service';
 import { HelperService } from '../../services/helper.service';

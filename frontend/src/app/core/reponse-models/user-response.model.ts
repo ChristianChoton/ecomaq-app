@@ -6,5 +6,6 @@ export interface UserResponse {
     firstName: string,
     gender: string,
     lastName: string,
-    mobile: string
+    mobile: string,
+    isAdmin: boolean,
 }

@@ -1,0 +1,47 @@
+<title-page [heading]="'Tu opinión nos ayuda a mejorar'"></title-page>
+<div class="inner-container bg-white section-gap-lg not-found-page">
+  <div class="container">
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+      <div
+        fxFlex.xs="100"
+        fxFlex.sm="100"
+        fxFlex.md="80"
+        fxFlex.lg="40"
+        fxFlex.xl="40"
+      >
+        <mat-card
+          class="text-center pb-5"
+          style="padding-left: 1rem; padding-right: 1rem"
+        >
+          <mat-form-field class="example-full-width mt-3">
+            <mat-label
+              >Cuentanos tu experiencia con respecto al servicio
+              brindado...</mat-label
+            >
+            <textarea
+              matInput
+              placeholder=""
+              class="w-100"
+              rows="6"
+              [(ngModel)]="detail"
+            ></textarea>
+          </mat-form-field>
+          <div class="mb-4">
+            <label class="block mb-3 font-bold">Calificanos</label>
+            <p-rating
+              [(ngModel)]="rating"
+            ></p-rating>
+          </div>
+          <button
+            mat-raised-button
+            class="button-lg w-100"
+            color="accent"
+            (click)="sendComment()"
+          >
+            Enviar comentarios
+          </button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

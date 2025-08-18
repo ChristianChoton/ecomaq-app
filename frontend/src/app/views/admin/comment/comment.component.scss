@@ -1,0 +1,71 @@
+.product-card {
+  background-color: #ffffff;
+  padding: 1rem;
+}
+
+.product-card img {
+  object-fit: contain;
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  border: transparent
+}
+
+
+.product-card .text-sm {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+::ng-deep .p-button.p-button-sm {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+}
+
+::ng-deep .p-button.p-button-text {
+  background-color: transparent;
+  border: none;
+  color: #f44336;
+}
+
+::ng-deep .p-button.p-button-text:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: #ffb300;
+}
+
+.rating i {
+  font-size: 1rem;
+}
+
+::ng-deep .p-card-content {
+  padding-top: 0 !important;
+}
+
+.products-wrapper {
+  display: flex;
+  align-items: stretch;
+  min-height: 100%;
+}
+
+.filter-panel {
+  width: 250px;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  margin-right: 1rem;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.product-list {
+  flex: 1;
+}

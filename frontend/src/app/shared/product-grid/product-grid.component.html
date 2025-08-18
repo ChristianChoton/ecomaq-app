@@ -1,36 +1,77 @@
-<div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap" *ngIf="products && products.length > 0">
-  <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="{{lg}}" fxFlex.xl="{{xl}}" *ngFor="let product of products; let i=index; trackBy: trackByObjectID">
-     <mat-card class="product-card" *ngIf="gridLength && (i<gridLength)">
-      <a class="p-link" [routerLink]="['/products', product?.id]" *ngIf="product?.category.type === 'product'">
-        <img width="626" height="800" mat-card-image [src]="product.image" alt="Photo of a Shiba Inu">
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="none"
+  class="col-gap"
+  *ngIf="products && products.length > 0"
+>
+  <div
+    fxFlex.xs="100"
+    fxFlex.sm="50"
+    fxFlex.md="50"
+    fxFlex.lg="{{ lg }}"
+    fxFlex.xl="{{ xl }}"
+    *ngFor="let product of products; let i = index; trackBy: trackByObjectID"
+  >
+    <mat-card class="product-card" *ngIf="gridLength && i < gridLength">
+      <a
+        class="p-link"
+        [routerLink]="[
+          product?.category.type ? '/products' : '/machinery',
+          product?.id
+        ]"
+      >
+        <img
+          width="626"
+          height="800"
+          mat-card-image
+          [src]="product.image"
+          alt="Photo of a Shiba Inu"
+        />
       </a>
-      <a class="p-link" [routerLink]="['/machinery', product?.id]" *ngIf="product?.category.type === 'machinery'">
-        <img width="626" height="800" mat-card-image [src]="product.image" alt="Photo of a Shiba Inu">
-      </a>
-      <div class="wishlist-icon {{i}}-wishlist" id="{{i}}-wishlist">
-         <a (click)="productAddToWishlist(product, i+'-wishlist')"><i  class="material-icons"> favorite </i></a>
+      <div class="wishlist-icon {{ i }}-wishlist" id="{{ i }}-wishlist">
+        <a (click)="productAddToWishlist(product, i + '-wishlist')"
+          ><i class="material-icons"> favorite </i></a
+        >
       </div>
-        <mat-card-content class="product-content relative">
-           <h4 *ngIf="product?.category.type === 'product'"><a [routerLink]="['/products', product?.id]" class="title-link">{{product?.name}}</a> </h4>
-           <h4 *ngIf="product?.category.type === 'machinery'"><a [routerLink]="['/machinery', product?.id]" class="title-link">{{product?.name}}</a> </h4>
-           <div>
-              <div fxFlex fxLayoutAlign="space-between">
-                 <h5 class="accent-color">{{product?.price | currency: product.currency}}</h5>
-                 <div class="rating-star">
-                    <l-rating [rate]="product.rating"></l-rating>
-                 </div>
-              </div>
-           </div>
-           <div class="m-icon" *ngIf="checkCartAlready(product)">
-              <add-to-cart [product]="product" (addToCart)="addToCartProduct($event)"></add-to-cart>
-           </div>
-           <div class="m-icon" *ngIf="!checkCartAlready(product)">
-               <button mat-fab [routerLink]="['/products', product?.id]" *ngIf="product?.category.type === 'product'"><i class="material-icons">remove_red_eye</i> </button>
-               <button mat-fab [routerLink]="['/machinery', product?.id]" *ngIf="product?.category.type === 'machinery'"><i class="material-icons">remove_red_eye</i> </button>
-           </div>
-
-        </mat-card-content>
-     </mat-card>
+      <mat-card-content class="product-content relative">
+        <div>
+          <h4>
+            <a
+              [routerLink]="[
+                product?.category.type ? '/products' : '/machinery',
+                product?.id
+              ]"
+              class="title-link"
+              >{{ product?.name }}</a
+            >
+          </h4>
+          <div fxFlex fxLayoutAlign="space-between">
+            <h5 class="accent-color">
+              {{ product?.price | currency : product.currency }}
+            </h5>
+            <div class="rating-star">
+              <l-rating [rate]="product.rating"></l-rating>
+            </div>
+          </div>
+        </div>
+        <div class="m-icon" *ngIf="checkCartAlready(product)">
+          <add-to-cart
+            [product]="product"
+            (addToCart)="addToCartProduct($event)"
+          ></add-to-cart>
+        </div>
+        <div class="m-icon" *ngIf="!checkCartAlready(product)">
+          <button
+            mat-fab
+            [routerLink]="[
+              product?.category.type ? '/products' : '/machinery',
+              product?.id
+            ]"
+          >
+            <i class="material-icons">remove_red_eye</i>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
-

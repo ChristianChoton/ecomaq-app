@@ -31,4 +31,5 @@ export class GridListProductComponent {
   }
 
   buyProduct = (item: Product) => this.shopping.addToCart(item);
+  addProduct = (item: Product) => this.shopping.addToWishlist(item);
 }

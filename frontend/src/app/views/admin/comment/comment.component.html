@@ -1,0 +1,42 @@
+<div
+  class="container"
+  *ngIf="comments"
+  style="padding-left: 2rem; padding-right: 2rem"
+>
+  <div
+    fxLayout="row wrap"
+    class="col-gap"
+    *ngIf="comments && comments.length > 0"
+  >
+    <div
+      fxFlex.xs="100"
+      fxFlex.sm="100"
+      fxFlex.md="33.33"
+      fxFlex.lg="33.33"
+      fxFlex.xl="33.33"
+      *ngFor="let comment of comments"
+    >
+      <mat-card>
+        <mat-card-content class="relative">
+          <h4 class="font-bold title-link simple-btn" style="margin-bottom: 0">
+            {{ comment?.user.firstName }} {{ comment?.user.lastName }}
+          </h4>
+          <div
+            class="surface-0 flex align-items-start gap-2 justify-content-start py-1"
+          >
+            <span class="text-900 font-medium text-sm" style="font-size: 12px !important;">{{
+              comment.rating
+            }}</span>
+            <i class="pi pi-star-fill rating"></i>
+          </div>
+          <p [innerHTML]="comment?.detail"></p>
+          <div class="meta-tag">
+            <p class="simple-btn text-muted">
+              <i class="material-icons"> calendar_today </i> {{ comment?.date | date:'medium' }} 
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

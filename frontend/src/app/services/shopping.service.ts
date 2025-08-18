@@ -106,8 +106,8 @@ export class ShoppingService {
     }
 
     let toastOption: ToastOptions = {
-      title: "Remove Product From Cart",
-      msg: "Product removing from cart",
+      title: "Quitar producto",
+      msg: "Producto eliminado del carrito",
       showClose: true,
       timeout: 1000,
       theme: "material",
@@ -122,8 +122,8 @@ export class ShoppingService {
 
   public addToWishlist(data: any) {
     let toastOption: ToastOptions = {
-      title: "Adding Product To Wishlist",
-      msg: "Product adding to the wishlist",
+      title: "Agregar producto",
+      msg: "Producto añadido a la lista de deseos",
       showClose: true,
       timeout: 1000,
       theme: "material",
@@ -143,12 +143,15 @@ export class ShoppingService {
       }
     });
     if (!found) {
+      if(!data.quantity){
+        data.quantity = 1
+      }
       products.push(data);
     }
 
     if (productsLength == products.length) {
-      toastOption.title = "Product Already Added";
-      toastOption.msg = "You have already added this product to wishlist";
+      toastOption.title = "Producto ya agregado";
+      toastOption.msg = "Ya has añadido este producto a la lista de deseos";
     }
 
     this.toastyService.wait(toastOption);
@@ -176,8 +179,8 @@ export class ShoppingService {
     }
 
     const toastOption: ToastOptions = {
-      title: "Remove Product From Wishlist",
-      msg: "Product removing from wishlist",
+      title: "Eliminar producto",
+      msg: "Producto eliminado de la lista de deseos",
       showClose: true,
       timeout: 1000,
       theme: "material",
@@ -199,8 +202,8 @@ export class ShoppingService {
     }
 
     let toastOption: ToastOptions = {
-      title: "Adding All Product To Cart",
-      msg: "Products adding to the cart",
+      title: "Añadir todos los productos",
+      msg: "Añadiendo productos al carrito",
       showClose: true,
       timeout: 1000,
       theme: "material",

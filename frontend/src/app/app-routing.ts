@@ -1,8 +1,9 @@
 import { Routes} from '@angular/router';
 import { MainComponent } from './main/main.component';
-import { NotFoundComponent } from './Pages/NotFound/NotFound.component';
 import { HomeComponent } from './views/home/home.component';
 import { CartComponent } from './views/cart/cart.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { CommentComponent } from './views/comment/comment.component';
 
 export const AppRoutes : Routes = [
    {
@@ -31,12 +32,16 @@ export const AppRoutes : Routes = [
             component: CartComponent
          },
          {
+            path: 'comment',
+            component: CommentComponent
+         },
+         {
           path: 'not-found',
           component: NotFoundComponent
          },
          {
             path: 'session',loadChildren: ()=>
-            import('./views/payment/payment.module').then(m => m.PaymentModule)
+            import('./views/session/session.module').then(m => m.SessionModule)
          },
          {
             path: 'checkout',loadChildren: ()=>
@@ -45,6 +50,10 @@ export const AppRoutes : Routes = [
          {
             path: 'account',loadChildren: ()=>
             import('./views/account/account.module').then (m => m.AccountModule)
+         },
+         {
+            path: 'admin',loadChildren: ()=>
+            import('./views/admin/admin.module').then (m => m.AdminModule)
          }
       ]
    },

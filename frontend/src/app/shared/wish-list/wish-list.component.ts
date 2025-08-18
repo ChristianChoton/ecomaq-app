@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { EmbryoService } from '../../services/Embryo.service';
 
 @Component({
   selector: 'wish-list',

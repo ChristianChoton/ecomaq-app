@@ -10,13 +10,20 @@ import { UserResponse } from "../core/reponse-models/user-response.model";
 import { User } from "../core/models/user.model";
 import { Auth } from "../core/models/auth.model";
 import { UserCreate } from "../core/models/user-create.model";
-
+import { Order } from "../core/models/order.model";
+import { OrderCreate } from "../core/models/order-create.model";
+import { OrderResponse } from "../core/reponse-models/order-response.model";
+import { orderToModel } from "../core/mappers/order.mapper";
+import { CommentCreate } from "../core/models/comment-create.model";
+import { Comment } from "../core/models/comment.model";
+import { CommentResponse } from "../core/reponse-models/comment-response.model";
+import { commentToModel } from "../core/mappers/comment.mapper";
 
 @Injectable()
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  baseRute = 'https://ecomaq-api.onrender.com/api/';
+  baseRute = "https://ecomaq-api.onrender.com/api/";
 
   public getProducts(): Observable<Product[]> {
     return this.http
@@ -77,6 +84,34 @@ export class HttpService {
     return this.http.post<Token>(`${this.baseRute}auth/register`, body, {
       headers: this.headers(),
     });
+  }
+
+  public createOrder(body: OrderCreate) {
+    return this.http.post(`${this.baseRute}orders`, body, {
+      headers: this.headers(),
+    });
+  }
+
+  public getOrders(): Observable<Order[]> {
+    return this.http
+      .get<OrderResponse[]>(`${this.baseRute}orders`, {
+        headers: this.headers(),
+      })
+      .pipe(map((orders) => orders.map(orderToModel)));
+  }
+
+  public createComment(body: CommentCreate) {
+    return this.http.post(`${this.baseRute}comments`, body, {
+      headers: this.headers(),
+    });
+  }
+
+  public getComments(): Observable<Comment[]> {
+    return this.http
+      .get<CommentResponse[]>(`${this.baseRute}comments/all`, {
+        headers: this.headers(),
+      })
+      .pipe(map((orders) => orders.map(commentToModel)));
   }
 
   private headers(): HttpHeaders {

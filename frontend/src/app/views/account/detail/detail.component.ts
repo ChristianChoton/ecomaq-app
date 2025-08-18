@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { HttpService } from "../../../services/http.service";
 import { User } from "../../../core/models/user.model";
+import { UserService } from "../../../services/user.service";
 
 @Component({
   selector: "account-detail",
@@ -8,11 +8,13 @@ import { User } from "../../../core/models/user.model";
   styleUrls: ["./detail.component.scss"],
 })
 export class DetailComponent {
-  constructor(private http: HttpService) {}
+  constructor(private _user: UserService) {}
 
   user: User = {} as User;
 
   ngOnInit() {
-    this.http.getMe().subscribe((u) => (this.user = u));
+    this._user.user$.subscribe((u) => {
+      if (u) this.user = u;
+    });
   }
 }

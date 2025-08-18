@@ -5,5 +5,6 @@ export interface User {
     firstName: string,
     gender: string,
     lastName: string,
-    mobile: string     
+    mobile: string,
+    isAdmin: boolean,     
 }

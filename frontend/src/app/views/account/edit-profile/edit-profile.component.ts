@@ -9,6 +9,7 @@ import { User } from "../../../core/models/user.model";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpService } from "../../../services/http.service";
 import { userToResponse } from "../../../core/mappers/user.mapper";
+import { UserService } from "../../../services/user.service";
 
 @Component({
   selector: "account-edit-profile",
@@ -35,7 +36,8 @@ export class EditProfileComponent implements OnInit {
     private router: Router,
     private formGroup: UntypedFormBuilder,
     private toastyService: ToastaService,
-    private http: HttpService
+    private http: HttpService,
+    private _user: UserService
   ) {
     this.route.params.subscribe((params) => {
       this.route.queryParams.forEach((queryParams) => {
@@ -57,32 +59,36 @@ export class EditProfileComponent implements OnInit {
       ],
     });
 
-    let data;
-    this.http.getMe().subscribe({
-      next: (u) => (data = u),
-      error: (e) => console.log(e),
-      complete: () => {
-        this.user = data;
-
-        this.info.patchValue({
-          first_name: this.user.firstName,
-          last_name: this.user.lastName,
-          gender: this.user.gender,
-          date: new Date(this.user.birthDate),
-          phone_number: this.user.mobile,
-          email: this.user.email,
-        });
-      },
+    this._user.user$.subscribe((u) => {
+      if (u) this.user = u;
+      this.info.patchValue({
+        first_name: this.user.firstName,
+        last_name: this.user.lastName,
+        gender: this.user.gender,
+        date: new Date(this.user.birthDate),
+        phone_number: this.user.mobile,
+        email: this.user.email,
+      });
     });
   }
 
   submitProfileInfo() {
     if (this.info.valid) {
+      this.user.firstName = this.info.get("first_name")?.value;
+      this.user.lastName = this.info.get("last_name")?.value;
+      this.user.gender = this.info.get("gender")?.value;
+      this.user.birthDate = this.info.get("date")?.value;
+      this.user.mobile = this.info.get("phone_number")?.value;
+      this.user.email = this.info.get("email")?.value;
+
       const body = userToResponse(this.user);
+
+      let data;
       this.http.updateMe(body).subscribe({
-        next: (data) => console.log(data),
+        next: (r) => data = r,
         error: (e) => console.log(e),
         complete: () => {
+          this._user.setUser(data);
           this.router.navigate(["/account/profile"]).then(() => {
             this.toastyService.success(this.toastOption);
           });

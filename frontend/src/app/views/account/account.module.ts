@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
 import { AccountRoutes } from './account.routing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -42,6 +42,7 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatInputModule,
     FlexLayoutModule,
+    MatNativeDateModule,
     RouterModule.forChild(AccountRoutes),    
   ]
 })
