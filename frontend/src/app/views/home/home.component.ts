@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   public getFeaturedProducts() {
     this.http.getProducts().subscribe((r) => {
       this.productsArray = r, 
-      this.singleProduct = this.productsArray[3];
+      this.singleProduct = this.productsArray[26];
     });
   }
 

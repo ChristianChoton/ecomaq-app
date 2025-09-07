@@ -54,7 +54,10 @@
                 <p style="text-align: justify;">
                   {{detailData?.description}}. Producto cuidadosamente seleccionado por ECOMAQ para brindarte calidad, resistencia y funcionalidad en cada proyecto de construcción. Fabricado con materiales de alto rendimiento, es ideal para profesionales del rubro y usuarios que buscan soluciones duraderas y confiables.
                 </p>
-              </div>              
+              </div>   
+              <div class="mb-4">
+                <a href="javascript:void(0)" class="text-underline" (click)="showTechnicalSheet(detailData)"> Ver ficha técnica</a>
+              </div>           
               <div fxLayoutGap="30px" class="mb-3 select-group">             
                 <mat-form-field>
                   <mat-select placeholder="Quantity" (selectionChange)="calculatePrice(detailData, $event.value)">
@@ -64,10 +67,11 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div class="mb-4">
+              <!-- <div class="mb-4">
                 <a href="javascript:void(0)" class="text-underline" (click)="addToWishlist(detailData)"> Añadir a deseos</a>
-              </div>
+              </div> -->
               <div class="mb-5 detail-btns">
+                <button class="button-lg mr-3" color="primary" mat-raised-button (click)="addToWishlist(detailData)">Añadir a deseos</button>
                 <button mat-raised-button color="accent" class="button-lg mr-3" (click)="addToCart(detailData)">Añadir al carrito</button>
                 <button class="button-lg" mat-raised-button (click)="buyNow(detailData)">Comprar ahora</button>
               </div>              

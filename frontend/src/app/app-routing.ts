@@ -28,6 +28,10 @@ export const AppRoutes : Routes = [
             import('./views/machinery/machinery.module').then (m => m.MachineryModule)
          },
          {
+            path: 'services',loadChildren: ()=>
+            import('./views/services/services.module').then (m => m.ServicesModule)
+         },
+         {
             path: 'cart',
             component: CartComponent
          },

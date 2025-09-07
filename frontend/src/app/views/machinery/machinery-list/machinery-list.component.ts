@@ -9,7 +9,7 @@ import { Product } from "../../../core/models/product.model";
   styleUrls: ["./machinery-list.component.scss"],
 })
 export class MachineryListComponent implements OnInit {
-  pageTitle: string = "Machinery";
+  pageTitle: string = "Maquinaria";
   products: Product[] = [];
   private startedListProducts: Product[] = [];
 

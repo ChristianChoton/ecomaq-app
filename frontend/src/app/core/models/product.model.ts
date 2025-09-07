@@ -10,6 +10,7 @@ export interface Product {
     stock: number;
     currency: string;
     category: Category;
+    pdf: string;
 
     quantity: number;
     inventoryStatus: string;

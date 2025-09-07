@@ -1,42 +1,87 @@
-<div fxLayout='row wrap' class="col-gap" *ngIf="singleProduct">
-   <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-     <div class="detail-thumb text-center">
-       <mat-grid-list cols="1" rowHeight="1:1">
-         <mat-grid-tile>
-           <a class="p-link" [routerLink]="['/products', singleProduct?.id]">
-             <img width="626" height="800" [src]="singleProduct.image" alt="Deal Of The Day">
-           </a>
-         </mat-grid-tile>
-       </mat-grid-list>
-     </div>
-   </div>
-   <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" style="margin-top: 3rem;padding-right: 2rem;">
-     <div class="detail-content mb-5">
-       <h1 class="font-normal">Oferta del día</h1>
-       <h4 class="font-normal">{{singleProduct?.name}}</h4>
-       <p>
-         <del class="mr-2">{{singleProduct?.price | currency:singleProduct.currency}}</del>
-         <span class="accent-color">Solo ahora {{85 | currency:singleProduct.currency}}</span>
-       </p>
-       <p style="text-align: justify;margin-bottom: 2rem;">La madera tornillo es una opción ideal para tus proyectos de construcción y carpintería gracias a su resistencia, 
-        estabilidad y facilidad de trabajo. Proveniente de bosques tropicales sostenibles, esta madera destaca por su color amarillo dorado, 
-        textura suave y vetas naturales que realzan la estética de cualquier estructura.</p>
-       
-       <timer-count [dateTime]="counterDateTime"></timer-count>
-       <div>
-         <button mat-raised-button color="accent" [routerLink]="['/products', singleProduct?.id]">Compra ahora</button>
-       </div>
-     </div>
-     <mat-grid-list cols="3" rowHeight="1:1" gutterSize="20px" class="mat-gallery-grid">
-       <ng-container *ngFor="let w of wood">
-         <ng-container>
-            <mat-grid-tile id="{{w}}_img" class="selected_img">
-              <a class="p-link" href="javascript:void(0)">
-                <img width="626" height="800" alt="deal of the day grid" [src]="'assets/images/wood/' + w + '.jpg'" alt="">
-              </a>
-            </mat-grid-tile>
-         </ng-container>
-       </ng-container>
-     </mat-grid-list>
-   </div>
+<div fxLayout="row wrap" class="col-gap" *ngIf="singleProduct">
+  <div
+    fxFlex.xs="100"
+    fxFlex.sm="100"
+    fxFlex.md="50"
+    fxFlex.lg="50"
+    fxFlex.xl="50"
+  >
+    <div class="detail-thumb text-center">
+      <mat-grid-list cols="1" rowHeight="1:1">
+        <mat-grid-tile>
+          <a class="p-link" [routerLink]="['/products', singleProduct?.id]">
+            <img
+              width="626"
+              height="800"
+              [src]="singleProduct.image"
+              alt="Deal Of The Day"
+            />
+          </a>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+  <div
+    fxFlex.xs="100"
+    fxFlex.sm="100"
+    fxFlex.md="50"
+    fxFlex.lg="50"
+    fxFlex.xl="50"
+    style="margin-top: 3rem; padding-right: 2rem"
+  >
+    <div class="detail-content mb-5">
+      <h1 class="font-normal">Oferta del día</h1>
+      <h4 class="font-normal">{{ singleProduct?.name }}</h4>
+      <p>
+        <del class="mr-2">{{
+          singleProduct?.price | currency : singleProduct.currency
+        }}</del>
+        <span class="accent-color"
+          >Solo ahora {{ 75000 | currency : singleProduct.currency }}</span
+        >
+      </p>
+      <p style="text-align: justify; margin-bottom: 2rem">
+        La excavadora hidráulica CAT 336 DL es un equipo de alto rendimiento
+        diseñado para trabajos exigentes en movimiento de tierra y construcción
+        pesada. Cuenta con un motor potente y un sistema hidráulico avanzado que
+        le otorgan gran fuerza de excavación y eficiencia en el consumo de
+        combustible. Su cabina ergonómica y tecnologías integradas aseguran
+        productividad, seguridad y comodidad para el operador en todo tipo de
+        proyectos.
+      </p>
+
+      <timer-count [dateTime]="counterDateTime"></timer-count>
+      <div>
+        <button
+          mat-raised-button
+          color="accent"
+          [routerLink]="['/products', singleProduct?.id]"
+        >
+          Compra ahora
+        </button>
+      </div>
+    </div>
+    <mat-grid-list
+      cols="3"
+      rowHeight="1:1"
+      gutterSize="20px"
+      class="mat-gallery-grid"
+    >
+      <ng-container *ngFor="let w of wood">
+        <ng-container>
+          <mat-grid-tile id="{{ w }}_img" class="selected_img">
+            <a class="p-link" href="javascript:void(0)">
+              <img
+                width="626"
+                height="800"
+                alt="deal of the day grid"
+                [src]="'assets/images/wood/' + w + '.jpg'"
+                alt=""
+              />
+            </a>
+          </mat-grid-tile>
+        </ng-container>
+      </ng-container>
+    </mat-grid-list>
+  </div>
 </div>

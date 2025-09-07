@@ -31,7 +31,7 @@ export class MainComponent implements OnInit {
     this.http.getMe().subscribe({
       next: (r) => (data = r),
       error: (e) => console.log(e),
-      complete: () => this._user.setUser(data)
+      complete: () => this._user.setUser(data),
     });
   }
 
@@ -65,4 +65,6 @@ export class MainComponent implements OnInit {
   }
 
   onActivate = (e) => window.scroll(0, 0);
+
+  joinWhatsApp = () => window.open("https://chat.whatsapp.com/DrDJ6qxpLc8KsgtP34AUNa?mode=ems_wa_c o", "_blank");
 }

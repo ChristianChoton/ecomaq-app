@@ -40,6 +40,8 @@ export class ShopDetailsComponent {
       this.totalPrice = detailData.price*value;
    }
 
+   showTechnicalSheet = (value:any) => window.open(`${value.pdf}`, "_blank");
+
    public addToWishlist = (value:any) => this.shopping.addToWishlist(value);
    
    public addToCart = (value:any) => this.shopping.addToCart(value);

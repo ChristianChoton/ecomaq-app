@@ -13,6 +13,7 @@ export function productToModel(p: ProductResponse): Product {
     currency: p.currency,
     quantity: 0,
     inventoryStatus: getInventaryStatus(p.stock),
+    pdf: `assets/pdfs/${p?.imageCode}_.pdf`,
 
     category: {
       id: p.category._id,

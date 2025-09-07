@@ -34,6 +34,7 @@
     "@angular/platform-server": "16.2.12",
     "@angular/router": "16.2.12",
     "@babel/runtime": "^7.28.2",
+    "@fortawesome/fontawesome-free": "^7.0.0",
     "@nguniversal/express-engine": "^16.2.0",
     "@ngx-loading-bar/core": "^7.0.0",
     "@ngx-loading-bar/router": "^7.0.0",

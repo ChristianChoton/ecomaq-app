@@ -1,0 +1,41 @@
+<ng-container *ngIf="pageTitle">
+  <title-page heading="{{ pageTitle }}"></title-page>
+  <div class="inner-container section-gap pt-2">
+    <div class="card px-5 mx-5">
+      <div class="grid mt-2 products-wrapper">
+        <div
+          fxLayout="row wrap"
+          class="col-gap"
+          *ngIf="serviceList && serviceList.length > 0"
+        >
+          <div
+            fxFlex.xs="50"
+            fxFlex.sm="50"
+            fxFlex.md="50"
+            fxFlex.lg="50"
+            fxFlex.xl="50"
+            *ngFor="let blog of serviceList"
+          >
+            <mat-card>
+              <mat-card-content class="relative">
+                <h4 class="font-bold title-link simple-btn ml-3">
+                  {{ blog?.title }}
+                </h4>
+                <p [innerHTML]="blog?.short_content" class="ml-3 mb-5"></p>
+                <button
+                  class="button-md mr-3 mb-3"
+                  color="accent"
+                  mat-raised-button
+                  style="position: absolute; bottom: 8px; right: 8px"
+                  (click)="joinWhatsApp()"
+                >
+                  Solicitar información
+                </button>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

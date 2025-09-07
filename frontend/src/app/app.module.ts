@@ -36,6 +36,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { UserService } from './services/user.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
 	declarations: [
@@ -55,6 +56,7 @@ import { UserService } from './services/user.service';
 		SharedModule,
 		MatIconModule,
 		MatListModule,
+		MatButtonModule,
 		HttpClientModule,
 		LoadingBarModule,	
 		FlexLayoutModule,	

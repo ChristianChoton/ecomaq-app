@@ -9,7 +9,7 @@ import { Product } from "../../../core/models/product.model";
   styleUrls: ["./product-list.component.scss"],
 })
 export class ProductListComponent {
-  pageTitle: string = "Products";
+  pageTitle: string = "Productos";
   products: Product[] = [];
   private startedListProducts: Product[] = [];
 
