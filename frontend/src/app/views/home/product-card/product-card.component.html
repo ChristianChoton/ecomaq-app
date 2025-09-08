@@ -1,6 +1,6 @@
 <mat-card class="product-card" *ngIf="product" style="margin-bottom: 1px;">
    <a class="p-link" [routerLink]="['/' + module, product?.id]">
-     <img width="626" height="800" mat-card-image [src]="product.image" alt="Photo">
+     <img width="626" height="800" mat-card-image [src]="product.image" alt="Photo" style="max-width: 300px;max-height: 300px;">
    </a>
    <div class="wishlist-icon {{index}}-wishlist" id="{{type}}-{{index}}-wishlist">
       <a (click)="productAddToWishlist(product, type+'-'+index+'-wishlist')"><i  class="material-icons"> favorite </i></a>
