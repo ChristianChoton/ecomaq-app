@@ -31,10 +31,17 @@ exports.getOne = asyncHandler(async (req, res) => {
 });
 
 exports.update = asyncHandler(async (req, res) => {
-  const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+  const product = await Product.findByIdAndUpdate(
+    req.params.id,
+    {
+      ...req.body,
+      isAuctioned: true,
+    },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
   if (!product) return res.status(404).json({ msg: "No existe" });
   res.json(product);
 });
@@ -59,19 +66,18 @@ exports.listByCategory = asyncHandler(async (req, res) => {
 });
 
 exports.listByCategoryType = asyncHandler(async (req, res) => {
-  const { type } = req.params; 
+  const { type } = req.params;
 
-  const categories = await Category.find({ type: type }).select('_id');
-  const categoryIds = categories.map(c => c._id);
+  const categories = await Category.find({ type: type }).select("_id");
+  const categoryIds = categories.map((c) => c._id);
 
   const products = await Product.find({ category: { $in: categoryIds } })
     .lean()
     .select(unselectProperties)
-    .populate({ path: 'category', select: unselectProperties });
+    .populate({ path: "category", select: unselectProperties });
 
   if (!products.length)
     return res.status(404).json({ msg: "Sin productos para esta categoría" });
 
   res.json(products);
 });
-

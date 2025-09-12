@@ -9,5 +9,6 @@ export interface ProductResponse {
     rating: number;
     stock: number;
     currency: string;
+    isAuctioned: boolean;
     category: CategoryResponse;
 }

@@ -11,7 +11,8 @@ export interface Product {
     currency: string;
     category: Category;
     pdf: string;
-
+    isAuctioned: boolean;
+    
     quantity: number;
     inventoryStatus: string;
 }

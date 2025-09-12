@@ -8,7 +8,8 @@ const productSchema = new mongoose.Schema({
   rating:       { type: Number },
   stock:        { type: Number },
   currency:     { type: String },
-  category:     { type: mongoose.Schema.Types.ObjectId, ref: 'Category' }
+  category:     { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
+  isAuctioned:  { type: Boolean, default: false }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Product', productSchema);
