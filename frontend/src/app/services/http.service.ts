@@ -60,6 +60,15 @@ export class HttpService {
       .pipe(map(productToModel));
   }
 
+   public updateProduct(id: string, body: any): Observable<Product> {
+    return this.http
+      .patch<ProductResponse>(`${this.baseRute}products/${id}`, body, {
+        headers: this.headers(),
+      })
+      .pipe(map(productToModel));
+  }
+
+
   public authLogin(body: Auth): Observable<Token> {
     return this.http.post<Token>(`${this.baseRute}auth/login`, body);
   }

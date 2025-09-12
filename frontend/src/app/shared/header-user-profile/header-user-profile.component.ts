@@ -20,6 +20,9 @@ export class HeaderUserProfileComponent {
 
   onLogout() {
     localStorage.removeItem('auth_token');
-    this.router.navigateByUrl('session/signin');
+    location.reload();
+    setTimeout(() => {
+      this.router.navigateByUrl('session/signin');
+    }, 200);    
   }
 }

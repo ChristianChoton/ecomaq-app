@@ -1,28 +1,56 @@
-<mat-card class="product-card" *ngIf="product" style="margin-bottom: 1px;">
-   <a class="p-link" [routerLink]="['/' + module, product?.id]">
-     <img width="626" height="800" mat-card-image [src]="product.image" alt="Photo" style="max-width: 300px;max-height: 300px;">
-   </a>
-   <div class="wishlist-icon {{index}}-wishlist" id="{{type}}-{{index}}-wishlist">
-      <a (click)="productAddToWishlist(product, type+'-'+index+'-wishlist')"><i  class="material-icons"> favorite </i></a>
-   </div>
+<mat-card class="product-card" *ngIf="product" style="margin-bottom: 1px">
+  <a class="p-link" [routerLink]="['/' + module, product?.id]">
+    <img
+      width="626"
+      height="800"
+      mat-card-image
+      [src]="product.image"
+      alt="Photo"
+      style="max-width: 300px; max-height: 300px"
+    />
+  </a>
+  <div
+    class="wishlist-icon {{ index }}-wishlist"
+    id="{{ type }}-{{ index }}-wishlist"
+  >
+    <a (click)="productAddToWishlist(product, type + '-' + index + '-wishlist')"
+      ><i class="material-icons"> favorite </i></a
+    >
+  </div>
   <mat-card-content class="product-content relative">
-     <h4 class="font-bold">
-      <a [routerLink]="['/' + module, product?.id]" class="title-link">{{product?.name}}</a> 
-     </h4>
-     <div>
-        <div fxFlex fxLayoutAlign="space-between">
-           <h5 class="accent-color">{{product?.price | currency: product.currency}}</h5>
-           <div class="rating-star">
-              <l-rating [rate]="product.rating"></l-rating>
-           </div>
-        </div>
-     </div>
-     <div class="m-icon" *ngIf="checkCartAlready(product)">
-      <add-to-cart [product]="product" (addToCart)="addToCartProduct($event)"></add-to-cart>
-     </div>
-     <div class="m-icon" *ngIf="!checkCartAlready(product)">
-         <button mat-fab [routerLink]="['/' + module, product?.id]"><i  class="material-icons"> remove_red_eye </i></button>
-     </div>
+    <br />
+    <mini-timer-count
+      [dateTime]="counterDateTime"
+      [showCalendar]="false"
+      [message]="product.isAuctioned ? 'Cierra' : 'Inicia'"
+    ></mini-timer-count>
+    <h4 class="font-bold">
+      <a [routerLink]="['/' + module, product?.id]" class="title-link">{{
+        product?.name
+      }}</a>
+      <div class="rating-star">
+        <l-rating [rate]="product.rating"></l-rating>
+      </div>
+    </h4>
+    <div>
+      <div fxFlex fxLayoutAlign="space-between">
+        <h4 class="accent-color mb-0" *ngIf="product.isAuctioned">Oferta Más Alta</h4>
+        <h4 class="accent-color mb-0" *ngIf="!product.isAuctioned">Precio base</h4>
+        <h3 class="accent-color" style="font-weight: 600;">
+          {{ product?.price | currency : product.currency }}
+        </h3>
+      </div>
+    </div>
+    <div class="m-icon" *ngIf="checkCartAlready(product)">
+      <add-to-cart
+        [product]="product"
+        (addToCart)="addToCartProduct($event)"
+      ></add-to-cart>
+    </div>
+    <div class="m-icon" *ngIf="!checkCartAlready(product)">
+      <button mat-fab [routerLink]="['/' + module, product?.id]">
+        <i class="material-icons"> remove_red_eye </i>
+      </button>
+    </div>
   </mat-card-content>
 </mat-card>
-

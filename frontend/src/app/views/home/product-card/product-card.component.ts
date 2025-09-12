@@ -15,9 +15,13 @@ export class ProductCardComponent implements OnInit {
    @Output() addToCart: EventEmitter<any> = new EventEmitter();
    @Output() addToWishlist: EventEmitter<any> = new EventEmitter();
 
+   counterDateTime: Date;
+
    constructor() { }
 
-   ngOnInit() {}
+   ngOnInit() {
+      this.counterDateTime = new Date(new Date().setHours(this.product.isAuctioned ? 12 : 18, 0, 0, 0));
+   }
 
    public addToCartProduct = (value:any) => this.addToCart.emit(value);
    

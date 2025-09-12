@@ -40,6 +40,7 @@ import { SliderModule } from 'primeng/slider';
 import { RatingModule } from 'primeng/rating';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
+import { MiniTimerCountComponent } from './mini-timer-count/mini-timer-count.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CardModule } from 'primeng/card';
     ImageZoomComponent,
     ConfirmationPopupComponent,
     GridListProductComponent,
-    ProductFilterNavComponent
+    ProductFilterNavComponent,
+    MiniTimerCountComponent
   ],
   imports: [
     CommonModule,
@@ -106,7 +108,8 @@ import { CardModule } from 'primeng/card';
     ImageZoomComponent,
     ConfirmationPopupComponent,
     GridListProductComponent,
-    ProductFilterNavComponent
+    ProductFilterNavComponent,
+    MiniTimerCountComponent
   ]
 })
 export class SharedModule { }

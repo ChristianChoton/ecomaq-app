@@ -1,0 +1,13 @@
+<div class="meta-tag" style="background-color: #F7F7F7;border-radius: 4px;">
+  <p class="simple-btn mt-2 ml-1" style="font-size: 15px">
+    <i class="material-icons">access_time </i>{{message}} en<span
+      style="font-weight: 600"
+      class="ml-1"
+      >{{ hours }}:{{ minutes }}:{{ seconds }}</span
+    >   
+  </p>
+  <br>
+  <p class="simple-btn text-muted ml-1" style="font-size: 15px;font-weight: 400" *ngIf="showCalendar">
+    <i class="material-icons">calendar_today </i>El día {{dayName}}, {{day}} de {{month}} {{year}} 
+  </p>
+</div>

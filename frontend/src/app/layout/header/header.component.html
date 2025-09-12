@@ -12,7 +12,7 @@
           <div class="list-flex user-tool">
             <header-cart [currency]="shopping?.currency" [cartProducts]="shopping?.localStorageCartProducts" [count]="shopping?.navbarCartCount" (removeProductData)="openConfirmationPopup($event)"></header-cart>
 
-            <wish-list [currency]="shopping?.currency" [wishListProducts]="shopping?.localStorageWishlist" [count]="shopping?.navbarWishlistProdCount" (removeWishListData)="openWishlistConfirmationPopup($event)" (addAllWishlistToCart)="addAllWishlistToCart($event)" (addToCart)="addToCart($event)"></wish-list>
+            <!-- <wish-list [currency]="shopping?.currency" [wishListProducts]="shopping?.localStorageWishlist" [count]="shopping?.navbarWishlistProdCount" (removeWishListData)="openWishlistConfirmationPopup($event)" (addAllWishlistToCart)="addAllWishlistToCart($event)" (addToCart)="addToCart($event)"></wish-list> -->
             
             <header-user-profile></header-user-profile>
           </div>
