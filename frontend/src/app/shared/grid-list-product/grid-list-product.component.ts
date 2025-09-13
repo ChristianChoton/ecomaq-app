@@ -11,8 +11,8 @@ export class GridListProductComponent {
 
   constructor(private shopping: ShoppingService) {}
 
-  @Input() products: Product[];
-  @Input() module: string;
+  @Input() products: Product[] = [];
+  @Input() module: string = '';
 
   getSeverity(item: Product) {
     switch (item.inventoryStatus) {

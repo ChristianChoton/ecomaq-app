@@ -9,14 +9,14 @@ import { interval as observableInterval } from "rxjs";
 })
 export class MiniTimerCountComponent implements OnInit, OnDestroy {
   @Input() dateTime: any;
-  @Input() message: string;
-  @Input() showCalendar: boolean;
+  @Input() message: string = '';
+  @Input() showCalendar: boolean = false;
 
 
-  private future: Date;
-  private diff: number;
-  private $counter: Observable<number>;
-  private subscription: Subscription;
+  private future: Date | undefined;
+  private diff: number = 0;
+  private $counter: Observable<number> | undefined;
+  private subscription: Subscription | undefined;
 
   hours: any;
   minutes: any;
@@ -31,7 +31,7 @@ export class MiniTimerCountComponent implements OnInit, OnDestroy {
 
   constructor() {}
 
-  dhms(t) {
+  dhms(t: any) {
     if (t && t > 0) {
       let days, hours, minutes, seconds;
       days = Math.floor(t / 86400);
@@ -63,7 +63,8 @@ export class MiniTimerCountComponent implements OnInit, OnDestroy {
       this.hours = "00";
       this.minutes = "00";
       this.seconds = "00";
-      this.subscription.unsubscribe();
+      if(this.subscription)
+        this.subscription.unsubscribe();
     }
   }
 
@@ -73,22 +74,24 @@ export class MiniTimerCountComponent implements OnInit, OnDestroy {
       this.$counter = observableInterval(1000).pipe(
         map((x) => {
           this.diff = Math.floor(
-            (this.future.getTime() - new Date().getTime()) / 1000
+            (this.future!.getTime() - new Date().getTime()) / 1000
           );
           return x;
         })
       );
 
-      this.day = this.future.getDate()
-      this.dayName = this.days[this.future.getDay()]
-      this.month = this.future.toLocaleString('default', { month: 'long' })
-      this.year = this.future.getFullYear()
+      this.day = this.future!.getDate()
+      this.dayName = this.days[this.future!.getDay()]
+      this.month = this.future!.toLocaleString('default', { month: 'long' })
+      this.year = this.future!.getFullYear()
 
       this.subscription = this.$counter.subscribe((x) => this.dhms(this.diff));
     }
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  ngOnDestroy(): void {7
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }    
   }
 }

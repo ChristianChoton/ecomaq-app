@@ -11,30 +11,38 @@ import { HttpService } from "../../services/http.service";
   styleUrls: ["./shop-details.component.scss"],
 })
 export class ShopDetailsComponent {
-  @Input() detailData: Product;
+  @Input() detailData: Product | undefined;
 
-  mainImgPath: string;
+  mainImgPath: string = '';
   totalPrice: any;
   quantityArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   showAmountInput = false;
   customAmount: number | null = null;
 
-  counterDateTime: Date;
+  counterDateTime: Date | undefined;
 
   constructor(private router: Router, private shopping: ShoppingService, private http: HttpService) {}
 
   ngOnInit() {
-    this.mainImgPath = this.detailData.image;
-    this.totalPrice = this.detailData.price;
-    this.counterDateTime = new Date(new Date().setHours(this.detailData.isAuctioned ? 12 : 18, 0, 0, 0));
+    this.mainImgPath = this.detailData!.image;
+    this.totalPrice = this.detailData!.price;
+
+    const base = new Date();
+    base.setHours(this.detailData!.isAuctioned ? 12 : 18, 0, 0, 0);
+
+    if(base.getTime() < Date.now()){
+        base.setDate(base.getDate() + 1);
+    }
+
+    this.counterDateTime = base;
   }
 
   ngOnChanges() {
     this.mainImgPath = "";
     this.totalPrice = null;
-    this.mainImgPath = this.detailData.image;
-    this.totalPrice = this.detailData.price;
+    this.mainImgPath = this.detailData!.image;
+    this.totalPrice = this.detailData!.price;
   }
 
   public getImagePath(imgPath: string, index: number) {
@@ -76,8 +84,8 @@ export class ShopDetailsComponent {
   };
 
   confirmAmount() {
-    if (this.customAmount && this.customAmount > 0 && this.customAmount > this.detailData.price) {
-      this.http.updateProduct(this.detailData.id, {price: this.customAmount}).subscribe({
+    if (this.customAmount && this.customAmount > 0 && this.customAmount > this.detailData!.price) {
+      this.http.updateProduct(this.detailData!.id, {price: this.customAmount}).subscribe({
          next: () => {},
          error: (e) => console.log(e),
          complete: () => {

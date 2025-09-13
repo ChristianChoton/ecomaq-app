@@ -18,7 +18,7 @@ export class ProductGridComponent implements OnInit {
    lg     = 25;
    xl     = 25;
 
-   trackByObjectID(index, hit) {
+   trackByObjectID(index: any, hit: any) {
       return hit.objectID;
    }
 
@@ -40,16 +40,16 @@ export class ProductGridComponent implements OnInit {
       this.loaded = true;
    }
 
-   public productAddToWishlist(value:any, parentClass) {
+   public productAddToWishlist(value:any, parentClass: any) {
       if(!(document.getElementById(parentClass)!.classList.contains('wishlist-active'))){
          let element = document.getElementById(parentClass)!.className += " wishlist-active";
       }
       this.addToWishList.emit(value);
    }
 
-   public checkCartAlready(singleProduct) {
+   public checkCartAlready(singleProduct: any) {
       let products = JSON.parse(localStorage.getItem("cart_item")!) || [];
-      if (!products.some((item) => item.name == singleProduct.name)) {
+      if (!products.some((item: any) => item.name == singleProduct.name)) {
          return true;
       }
    }

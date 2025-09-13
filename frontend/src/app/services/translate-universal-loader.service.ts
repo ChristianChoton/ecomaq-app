@@ -6,7 +6,7 @@
    constructor(private prefix: string = 'i18n', private suffix: string = '.json') {}
      
    public getTranslation(lang: string): Observable<any> {
-     return Observable.create(observer => {
+     return Observable.create((observer: any) => {
  observer.next(JSON.parse(fs.readFileSync(`${this.prefix}/${lang}${this.suffix}`, 'utf8')));
        observer.complete();
      });

@@ -7,7 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ["./confirmation-popup.component.scss"],
 })
 export class ConfirmationPopupComponent {
-  message: string;
+  message: string = '';
 
   constructor(public dialogRef: MatDialogRef<ConfirmationPopupComponent>) {}
 

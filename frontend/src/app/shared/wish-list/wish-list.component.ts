@@ -7,8 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class WishListComponent {
    @Input() wishListProducts : any;
-   @Input() count        : number;
-   @Input() currency      : string;
+   @Input() count        : number = 0;
+   @Input() currency      : string = '';
 
    @Output() removeWishListData : EventEmitter<any> = new EventEmitter();
    @Output() addAllWishlistToCart : EventEmitter<any> = new EventEmitter();
@@ -34,13 +34,13 @@ export class WishListComponent {
       this.addAllWishlistToCart.emit(this.wishListProducts);
    }
 
-   public calculatePrice(product) {
+   public calculatePrice(product: any) {
       let total = 0;
       total = product.price*product.quantity;
       return total;
    }
 
-   public addToCartProduct(product) {
+   public addToCartProduct(product: any) {
       this.addToCart.emit(product);
    }
 }

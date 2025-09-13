@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Auth } from "../../core/models/auth.model";
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "sigin",
@@ -9,7 +8,6 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms
 })
 export class SiginComponent {
   constructor() {}
-
  
   auth: Auth = new Auth();
   @Output() loginEvent: EventEmitter<Auth> = new EventEmitter();

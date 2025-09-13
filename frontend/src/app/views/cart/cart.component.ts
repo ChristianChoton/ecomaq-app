@@ -28,7 +28,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
     this.cdRef.detectChanges();
   }  
   
-  public getProductResponse(response) {
+  public getProductResponse(response: any) {
       this.products = null;
       let data = response.men
         .concat(response.women)
@@ -48,7 +48,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
     );
   }
 
-  public getPopupResponse(response, value) {
+  public getPopupResponse(response: any, value: any) {
     if (response) {
       this.shopping.removeLocalCartProduct(value);
     }
@@ -98,7 +98,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
     this.router.navigate(["/checkout"]);
   }
 
-  public getQuantityValue(product) {
+  public getQuantityValue(product: any) {
     if (!product.quantity) {
       product.quantity = 1;
     } 
@@ -106,7 +106,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
     return product.quantity
   }
 
-  public onChange(value, product) {
+  public onChange(value: any, product: any) {
     product.quantity = value;
     this.shopping.updateLocalCartProduct(product);
   }

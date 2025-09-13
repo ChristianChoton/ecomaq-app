@@ -46,7 +46,7 @@ export class ShoppingService {
       theme: "material",
     };
 
-    let found = products.some(function (el, index) {
+    let found = products.some(function (el: any, index: any) {
       if (el.name == data.name) {
         if (!data.quantity) {
           data.quantity = 1;
@@ -133,7 +133,7 @@ export class ShoppingService {
     products = JSON.parse(localStorage.getItem("wishlist_item")!) || [];
     let productsLength = products.length;
 
-    let found = products.some(function (el, index) {
+    let found = products.some(function (el: any, index: any) {
       if (el.name == data.name) {
         if (!data.quantity) {
           data.quantity = 1;
@@ -222,7 +222,7 @@ export class ShoppingService {
 		let products : any;
 		products = JSON.parse(localStorage.getItem("cart_item")!) || [];
 
-		let found = products.some(function (el, index) {
+		let found = products.some(function (el: any, index: any) {
 			if(el.name == data.name){
 				if(!data.quantity) { data.quantity = 1}
 				products[index]['quantity'] = data.quantity;
@@ -245,7 +245,7 @@ export class ShoppingService {
 		this.buyUserCartProducts = JSON.parse(localStorage.getItem("byProductDetails")!)
 	}
 
-  public addBuyUserDetails(formdata) {
+  public addBuyUserDetails(formdata: any) {
 		localStorage.setItem("user", JSON.stringify(formdata));
 
 		let product = JSON.parse(localStorage.getItem("cart_item")!)

@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   newArrivalSelectedTab: any = 0;
   featuredProductsSelectedTab: any = 0;
 
-  singleProduct: Product;
+  singleProduct: Product | undefined;
 
   constructor(
     private cdRef: ChangeDetectorRef,
@@ -78,11 +78,11 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     ];
   }
 
-  public addToCart = (value) => this.shopping.addToCart(value);
+  public addToCart = (value: any) => this.shopping.addToCart(value);
 
-  public addToWishlist = (value) => this.shopping.addToWishlist(value);
+  public addToWishlist = (value: any) => this.shopping.addToWishlist(value);
 
-  public onFeaturedSelectedTab(tabIndex) {
+  public onFeaturedSelectedTab(tabIndex: any) {
     this.productsSliderData = [];
     let category = this.helper.category_product_list[tabIndex];
     this.productsSliderData = this.productsArray.filter(
@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     return true;
   }
 
-  public onNewArrivalsSelectedTab(tabIndex) {
+  public onNewArrivalsSelectedTab(tabIndex: any) {
     this.newProductsSliderData = [];
     let category = this.helper.category_machinery_list[tabIndex];
     this.newProductsSliderData = this.productsArray.filter(

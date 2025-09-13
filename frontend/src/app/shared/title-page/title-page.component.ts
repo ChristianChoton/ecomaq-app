@@ -6,8 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./title-page.component.scss']
 })
 export class TitlePageComponent {
-   @Input() heading    : string;
-   @Input() subHeading : string;
+   @Input() heading    : string = '';
+   @Input() subHeading : string = '';
 
    constructor() {}
 }

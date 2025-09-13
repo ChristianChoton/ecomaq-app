@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { ShoppingService } from "../../../services/shopping.service";
 import { HelperService } from "../../../services/helper.service";
 import { HttpService } from "../../../services/http.service";
-import { Router } from "@angular/router";
 import { Auth } from "../../../core/models/auth.model";
 import { UserService } from "../../../services/user.service";
 
@@ -16,7 +15,6 @@ export class SigninComponent {
     public shopping: ShoppingService,
     public helper: HelperService,
     private http: HttpService,
-    private router: Router,
     private _user: UserService
   ) {}
 
@@ -43,7 +41,7 @@ export class SigninComponent {
   }
 
   handleLogin(auth: Auth) {
-    let data;
+    let data: any;
     this.http.authLogin(auth).subscribe({
       next: (r) => (data = r),
       error: (e) => console.log(e),

@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 export class HeaderCartComponent implements OnInit, OnChanges {
    @Input() cartProducts : any;
    @Input() count        : any;
-   @Input() currency     : string;
+   @Input() currency     : string = '';
 
    mobWidth : any;
    mobScreenSize : number = 767;
@@ -36,7 +36,7 @@ export class HeaderCartComponent implements OnInit, OnChanges {
       this.removeProductData.emit(product);
    }
 
-   public calculatePrice(product) {
+   public calculatePrice(product: any) {
       let total = 0;
       total = product.price*product.quantity;
       return total;

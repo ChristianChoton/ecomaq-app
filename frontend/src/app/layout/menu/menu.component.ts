@@ -26,7 +26,7 @@ import { UserService } from "../../services/user.service";
   ],
 })
 export class MenuComponent {
-  expanded: boolean;
+  expanded: boolean = false;
 
   constructor(public menuItems: MenuItems, public router: Router, private _user: UserService) {}
 
@@ -49,7 +49,7 @@ export class MenuComponent {
     return true;
   }
 
-  public redirectTo(subchildState) {
+  public redirectTo(subchildState: any) {
     this.router.navigate([subchildState.state], {
       queryParams: { category: subchildState.id },
     });

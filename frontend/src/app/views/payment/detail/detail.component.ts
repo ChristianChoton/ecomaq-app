@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit {
   isDisabledPaymentStepThree = false;
   emailPattern: any = /\S+@\S+\.\S+/;
 
-  paymentFormOne: UntypedFormGroup;
+  paymentFormOne: UntypedFormGroup | undefined;
 
   constructor(
     public shopping: ShoppingService,
@@ -103,7 +103,7 @@ export class DetailComponent implements OnInit {
 
   public submitPayment() {
     let userDetailsGroup = <UntypedFormGroup>(
-      this.paymentFormOne.controls["user_details"]
+      this.paymentFormOne!.controls["user_details"]
     );
     if (userDetailsGroup.valid) {
       switch (this.step) {
@@ -128,9 +128,9 @@ export class DetailComponent implements OnInit {
     }
   }
 
-  public selectedPaymentTabChange(value) {
+  public selectedPaymentTabChange(value: any) {
     let paymentGroup = <UntypedFormGroup>(
-      this.paymentFormOne.controls["payment"]
+      this.paymentFormOne!.controls["payment"]
     );
 
     paymentGroup.markAsUntouched();
@@ -164,12 +164,12 @@ export class DetailComponent implements OnInit {
 
   public finalStep() {
     let paymentGroup = <UntypedFormGroup>(
-      this.paymentFormOne.controls["payment"]
+      this.paymentFormOne!.controls["payment"]
     );
     if (paymentGroup.valid) {
-      this.shopping.addBuyUserDetails(this.paymentFormOne.value);
+      this.shopping.addBuyUserDetails(this.paymentFormOne!.value);
       const orderItems: OrderItem[] = this.shopping.buyUserCartProducts.map(
-        (p) => productToOrderItem(p)
+        (p: any) => productToOrderItem(p)
       );
 
       let subTotal = 0;

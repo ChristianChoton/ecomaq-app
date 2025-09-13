@@ -37,7 +37,7 @@ export class HeaderComponent {
     );
   }
 
-  public getPopupResponse(response: any, value: any, type) {
+  public getPopupResponse(response: any, value: any, type: any) {
     if (response) {
       if (type == "cart") {
         this.shopping.removeLocalCartProduct(value);
@@ -61,5 +61,5 @@ export class HeaderComponent {
     );
   }
 
-  public addToCart = (value) => this.shopping.addToCart(value, "wishlist");
+  public addToCart = (value: any) => this.shopping.addToCart(value, "wishlist");
 }

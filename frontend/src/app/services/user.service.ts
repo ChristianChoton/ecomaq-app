@@ -12,7 +12,7 @@ export class UserService {
   user$ = this.userSubject.asObservable();
 
   findUser() {
-    let data;
+    let data: any;
     this.http.getMe().subscribe({
       next: (r) => (data = r),
       error: (e) => console.log(e),

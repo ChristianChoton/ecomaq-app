@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
     document.getElementById("html")!.classList.remove("admin-panel");
     document.getElementById("html")!.classList.add("user-end");
 
-    let data;
+    let data: any;
     this.http.getMe().subscribe({
       next: (r) => (data = r),
       error: (e) => console.log(e),
@@ -51,7 +51,7 @@ export class MainComponent implements OnInit {
   }
 
   @HostListener("window:scroll", ["$event"])
-  onScrollEvent($event) {
+  onScrollEvent($event: any) {
     let scrollTop =
       window.pageYOffset ||
       document.documentElement.scrollTop ||
@@ -64,7 +64,7 @@ export class MainComponent implements OnInit {
     }
   }
 
-  onActivate = (e) => window.scroll(0, 0);
+  onActivate = (e: any) => window.scroll(0, 0);
 
   joinWhatsApp = () => window.open("https://chat.whatsapp.com/DrDJ6qxpLc8KsgtP34AUNa?mode=ems_wa_c o", "_blank");
 }

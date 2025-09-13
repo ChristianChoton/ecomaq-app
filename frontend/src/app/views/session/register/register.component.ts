@@ -16,7 +16,7 @@ export class RegisterComponent {
   ngOnInit() {}
 
   onCreate() {
-    let data;
+    let data: any;
     this.http.createUser(this.user).subscribe({
       next: (r) => (data = r),
       error: (e) => console.log(e),

@@ -17,8 +17,8 @@ import { UserService } from "../../../services/user.service";
   styleUrls: ["./edit-profile.component.scss"],
 })
 export class EditProfileComponent implements OnInit {
-  type: string;
-  info: UntypedFormGroup;
+  type: string = '';
+  info: UntypedFormGroup | undefined;
 
   emailPattern: any = /\S+@\S+\.\S+/;
   toastOption: ToastOptions = {
@@ -61,7 +61,7 @@ export class EditProfileComponent implements OnInit {
 
     this._user.user$.subscribe((u) => {
       if (u) this.user = u;
-      this.info.patchValue({
+      this.info!.patchValue({
         first_name: this.user.firstName,
         last_name: this.user.lastName,
         gender: this.user.gender,
@@ -73,17 +73,17 @@ export class EditProfileComponent implements OnInit {
   }
 
   submitProfileInfo() {
-    if (this.info.valid) {
-      this.user.firstName = this.info.get("first_name")?.value;
-      this.user.lastName = this.info.get("last_name")?.value;
-      this.user.gender = this.info.get("gender")?.value;
-      this.user.birthDate = this.info.get("date")?.value;
-      this.user.mobile = this.info.get("phone_number")?.value;
-      this.user.email = this.info.get("email")?.value;
+    if (this.info!.valid) {
+      this.user.firstName = this.info!.get("first_name")?.value;
+      this.user.lastName = this.info!.get("last_name")?.value;
+      this.user.gender = this.info!.get("gender")?.value;
+      this.user.birthDate = this.info!.get("date")?.value;
+      this.user.mobile = this.info!.get("phone_number")?.value;
+      this.user.email = this.info!.get("email")?.value;
 
       const body = userToResponse(this.user);
 
-      let data;
+      let data: any;
       this.http.updateMe(body).subscribe({
         next: (r) => data = r,
         error: (e) => console.log(e),
@@ -95,8 +95,8 @@ export class EditProfileComponent implements OnInit {
         },
       });
     } else {
-      for (let i in this.info.controls) {
-        this.info.controls[i].markAsTouched();
+      for (let i in this.info!.controls) {
+        this.info!.controls[i].markAsTouched();
       }
     }
   }

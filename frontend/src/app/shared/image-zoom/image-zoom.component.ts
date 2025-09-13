@@ -12,29 +12,29 @@ import {
   styleUrls: ["./image-zoom.component.scss"],
 })
 export class ImageZoomComponent {
-  img;
-  lens;
-  result;
-  cx;
-  cy;
-  container;
+  img: any;
+  lens: any;
+  result: any;
+  cx: any;
+  cy: any;
+  container: any;
   hide = true;
   _triggerAnimationIn = false;
   notFirstTime = false;
 
   constructor(private renderer: Renderer2, private el: ElementRef) {}
 
-  @ViewChild("img") imgElmRef: ElementRef;
-  @ViewChild("result") resultElmRef: ElementRef;
-  @ViewChild("container") containerElmRef: ElementRef;
+  @ViewChild("img") imgElmRef: ElementRef | undefined;
+  @ViewChild("result") resultElmRef: ElementRef | undefined;
+  @ViewChild("container") containerElmRef: ElementRef| undefined;
 
   @Input() imgStyle = "";
   @Input() resultStyle = "width:300px; height:300px";
   @Input() lensStyle = "width:30px; height:30px";
   @Input() containerStyle = "position: absolute";
-  imgSrc;
+  imgSrc: any;
 
-  @Input("imgSrc") set _imgSrc(val) {
+  @Input("imgSrc") set _imgSrc(val: any) {
     this.imgSrc = val;
     if (this.notFirstTime === true) {
       this.renderer.setStyle(
@@ -50,9 +50,9 @@ export class ImageZoomComponent {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.img = this.imgElmRef.nativeElement;
-    this.result = this.resultElmRef.nativeElement;
-    this.container = this.containerElmRef.nativeElement;
+    this.img = this.imgElmRef!.nativeElement;
+    this.result = this.resultElmRef!.nativeElement;
+    this.container = this.containerElmRef!.nativeElement;
 
     this.renderer.setAttribute(this.img, "style", <string>this.imgStyle);
     this.renderer.setAttribute(this.result, "style", <string>this.resultStyle);
@@ -99,7 +99,7 @@ export class ImageZoomComponent {
     this.renderer.listen(this.lens, "touchmove", this.moveLens.bind(this));
   }
 
-  moveLens(e) {
+  moveLens(e: any) {
     let pos, x, y;
     /*prevent any other actions that may occur when moving over the image:*/
     e.preventDefault();
@@ -149,7 +149,7 @@ export class ImageZoomComponent {
     );
   }
 
-  getCursorPos(e) {
+  getCursorPos(e: any) {
     let a,
       x = 0,
       y = 0;

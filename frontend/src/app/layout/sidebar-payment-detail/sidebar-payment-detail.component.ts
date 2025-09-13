@@ -24,7 +24,7 @@ export class SidebarPaymentDetailComponent {
       return subtotal;
    }
 
-   public removeProduct(value) {
+   public removeProduct(value: any) {
       let message = "Are you sure you want to delete this product?";
       this.popup.confirmationPopup(message).
          subscribe(res => {this.popupResponse = res},
@@ -33,7 +33,7 @@ export class SidebarPaymentDetailComponent {
                   );
    }
 
-   public getPopupResponse(response, value) {
+   public getPopupResponse(response: any, value: any) {
       if(response){
          this.shopping.removeLocalCartProduct(value);
          this.helper.paymentSidenavOpen = false;

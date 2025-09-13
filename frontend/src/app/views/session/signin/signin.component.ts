@@ -15,7 +15,7 @@ export class SigninComponent {
   ) {}
 
   handleLogin(auth: Auth) {
-    let data;
+    let data: any;
     this.http.authLogin(auth).subscribe({
       next: (r) => (data = r),
       error: (e) => console.log(e),

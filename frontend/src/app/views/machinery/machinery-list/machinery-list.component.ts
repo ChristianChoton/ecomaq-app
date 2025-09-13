@@ -13,7 +13,7 @@ export class MachineryListComponent implements OnInit {
   products: Product[] = [];
   private startedListProducts: Product[] = [];
 
-  category: string;
+  category: string = '';
 
   constructor(private route: ActivatedRoute, private http: HttpService) {}
 

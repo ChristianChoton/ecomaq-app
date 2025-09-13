@@ -11,7 +11,7 @@ import { switchMap } from "rxjs";
   styleUrls: ["./machinery-detail.component.scss"],
 })
 export class MachineryDetailComponent implements OnInit {
-  product: Product;
+  product: Product | undefined;
   productsList: Product[] = [];
 
   constructor(
@@ -36,11 +36,11 @@ export class MachineryDetailComponent implements OnInit {
       )
       .subscribe((products) => {
         this.productsList = products.filter(
-          (p) => p.id !== this.product.id
+          (p) => p.id !== this.product!.id
         );
       });
   }
 
-  public addToCart = (value) => this.shopping.addToCart(value);
-  public addToWishList = (value) => this.shopping.addToWishlist(value);
+  public addToCart = (value: any) => this.shopping.addToCart(value);
+  public addToWishList = (value: any) => this.shopping.addToWishlist(value);
 }

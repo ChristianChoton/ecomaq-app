@@ -1,7 +1,8 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { HelperService } from 'src/app/services/helper.service';
+import { HelperService } from '../../services/helper.service';
+
 
 @Component({
   selector: 'sidebar-menu',
@@ -18,10 +19,10 @@ import { HelperService } from 'src/app/services/helper.service';
     ]
 })
 export class SidebarMenuComponent {
-  public expanded       : boolean;
+  public expanded       : boolean = false;
   @Input() item  : any;
-  @Input() depth : number;
-  @HostBinding('attr.aria-expanded') ariaExpanded;
+  @Input() depth : number | undefined;
+  @HostBinding('attr.aria-expanded') ariaExpanded: any;
 
   constructor(public router: Router, public helper: HelperService) {
     if (this.depth === undefined) {

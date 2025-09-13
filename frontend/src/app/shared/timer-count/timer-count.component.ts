@@ -10,12 +10,10 @@ import { interval as observableInterval } from "rxjs";
 export class TimerCountComponent implements OnInit, OnDestroy {
   @Input() dateTime: any;
 
-  private future: Date;
-  private futureString: string;
-  private diff: number;
-  private $counter: Observable<number>;
-  private subscription: Subscription;
-  private message: string;
+  private future: Date | undefined;
+  private diff: number = 0;
+  private $counter: Observable<number> | undefined;
+  private subscription: Subscription | undefined;
 
   hours: any;
   minutes: any;
@@ -23,7 +21,7 @@ export class TimerCountComponent implements OnInit, OnDestroy {
 
   constructor() {}
 
-  dhms(t) {
+  dhms(t: any) {
     if (t && t > 0) {
       let days, hours, minutes, seconds;
       days = Math.floor(t / 86400);
@@ -55,7 +53,8 @@ export class TimerCountComponent implements OnInit, OnDestroy {
       this.hours = "00";
       this.minutes = "00";
       this.seconds = "00";
-      this.subscription.unsubscribe();
+      if(this.subscription)
+        this.subscription.unsubscribe();
     }
   }
 
@@ -65,7 +64,7 @@ export class TimerCountComponent implements OnInit, OnDestroy {
       this.$counter = observableInterval(1000).pipe(
         map((x) => {
           this.diff = Math.floor(
-            (this.future.getTime() - new Date().getTime()) / 1000
+            (this.future!.getTime() - new Date().getTime()) / 1000
           );
           return x;
         })
@@ -76,6 +75,7 @@ export class TimerCountComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if(this.subscription)
+      this.subscription.unsubscribe();
   }
 }
