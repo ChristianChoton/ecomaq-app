@@ -64,7 +64,7 @@ export class ShopDetailsComponent {
 
   public buyNow(value: any) {
     this.shopping.buyNow(value);
-    this.router.navigate(["/checkout"]);
+    this.router.navigateByUrl('/checkout');
   }
 
   toggleAmountInput() {

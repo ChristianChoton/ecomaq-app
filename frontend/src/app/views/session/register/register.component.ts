@@ -22,7 +22,7 @@ export class RegisterComponent {
       error: (e) => console.log(e),
       complete: () => {
         localStorage.setItem("auth_token", data.token);
-        this._user.findUser();
+        this._user.findUser("/home");
       },
     });
   }

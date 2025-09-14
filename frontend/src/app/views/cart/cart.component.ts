@@ -7,6 +7,7 @@ import {
 import { Router } from "@angular/router";
 import { ShoppingService } from "../../services/shopping.service";
 import { PopupService } from "../../services/popup.service";
+import { HttpService } from "../../services/http.service";
 
 @Component({
   selector: "cart",
@@ -18,7 +19,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
   quantityArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   popupResponse: any;
 
-  constructor(private router: Router, private cdRef: ChangeDetectorRef, public shopping: ShoppingService, private popup: PopupService) {}
+  constructor(private router: Router, private cdRef: ChangeDetectorRef, public shopping: ShoppingService, private popup: PopupService, private http: HttpService) {}
 
   ngOnInit() {
     
@@ -95,7 +96,19 @@ export class CartComponent implements OnInit, AfterViewChecked {
     this.shopping.updateAllLocalCartProduct(
       this.shopping.localStorageCartProducts
     );
-    this.router.navigate(["/checkout"]);
+
+    if(localStorage.getItem('auth_token')) {
+      this.http.getMe().subscribe({
+         next: () => {},
+         error: (e) => this.router.navigateByUrl('/checkout'),
+         complete: () => {
+            this.router.navigateByUrl('/checkout/payment');
+         },
+      })
+      
+    } else {
+        this.router.navigateByUrl('/checkout');
+    }
   }
 
   public getQuantityValue(product: any) {

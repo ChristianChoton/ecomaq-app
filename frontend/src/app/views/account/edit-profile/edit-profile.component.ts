@@ -89,7 +89,7 @@ export class EditProfileComponent implements OnInit {
         error: (e) => console.log(e),
         complete: () => {
           this._user.setUser(data);
-          this.router.navigate(["/account/profile"]).then(() => {
+          this.router.navigateByUrl('/account/profile').then(() => {
             this.toastyService.success(this.toastOption);
           });
         },

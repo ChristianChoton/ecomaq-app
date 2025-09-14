@@ -4,6 +4,7 @@ import { HelperService } from "../../../services/helper.service";
 import { HttpService } from "../../../services/http.service";
 import { Auth } from "../../../core/models/auth.model";
 import { UserService } from "../../../services/user.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "payment-signin",
@@ -15,7 +16,8 @@ export class SigninComponent {
     public shopping: ShoppingService,
     public helper: HelperService,
     private http: HttpService,
-    private _user: UserService
+    private _user: UserService,
+    private router: Router
   ) {}
 
   public toggleRightSidenav() {
@@ -47,7 +49,7 @@ export class SigninComponent {
       error: (e) => console.log(e),
       complete: () => {
         localStorage.setItem("auth_token", data.token);
-        this._user.findUser();
+        this._user.findUser('/checkout/payment');       
       },
     });
   }

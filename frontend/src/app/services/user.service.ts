@@ -11,14 +11,14 @@ export class UserService {
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
 
-  findUser() {
+  findUser(route: string) {
     let data: any;
     this.http.getMe().subscribe({
       next: (r) => (data = r),
       error: (e) => console.log(e),
       complete: () => {
         this.setUser(data);        
-        this.router.navigateByUrl("/home");
+        this.router.navigateByUrl(route);
       },
     });
   }
